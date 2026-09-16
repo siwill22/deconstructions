@@ -3,7 +3,7 @@
 //   node build.mjs
 //
 // A plain script with template literals and no dependencies: the whole site is
-// thirteen records and two page shapes, and a framework would be more machinery
+// fourteen records and two page shapes, and a framework would be more machinery
 // than content. Output is gitignored; the GitHub Actions workflow runs this and
 // publishes the result.
 
@@ -11,7 +11,7 @@ import { mkdir, writeFile, rm } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
-import { viewers, collections, levels, site } from './data/index.js';
+import { viewers, collections, levels, partners, site } from './data/index.js';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 
@@ -46,12 +46,28 @@ function page({ title, description, depth, body, script = '' }) {
 <body>
 ${body}
 <footer><div class="wrap">
+${partnerRow(up)}
 ${site.footer.map((p) => `<p>${p}</p>`).join('\n')}
 </div></footer>
 ${script}
 </body>
 </html>
 `;
+}
+
+/**
+ * The partner logo row. A partner with no logo file yet renders as its short
+ * name set in type, which keeps the row complete and makes the missing file
+ * obvious at a glance instead of leaving a broken image behind.
+ */
+function partnerRow(up) {
+  const items = partners.map((p) => {
+    const inner = p.logo
+      ? `<img src="${up}assets/logos/${esc(p.logo)}" alt="${esc(p.name)}" loading="lazy">`
+      : `<span class="wordmark-fallback">${esc(p.short ?? p.name)}</span>`;
+    return `<a class="partner" href="${esc(p.url)}" title="${esc(p.name)}">${inner}</a>`;
+  });
+  return `<div class="partners">\n${items.join('\n')}\n</div>`;
 }
 
 /* ---- the index page ----------------------------------------------------- */
@@ -64,9 +80,9 @@ function panel(v) {
     `<span class="badge">${esc(v.kind)}</span>`,
     ...levelsOf(v).map((l) => `<span class="badge level">${esc(l)}</span>`),
     v.live ? '' : '<span class="badge pending">not yet deployed</span>',
+    v.status ? `<span class="badge pending">${esc(v.status.replace(/\.$/, '').toLowerCase())}</span>` : '',
   ].filter(Boolean);
-  return `<a class="panel" href="viewers/${esc(v.slug)}.html"
-   data-collection="${esc(v.collection)}" data-levels="${esc(levelsOf(v).join('|'))}">
+  return `<a class="panel" href="viewers/${esc(v.slug)}.html" data-levels="${esc(levelsOf(v).join('|'))}">
   ${shot}
   <div class="body">
     <h3>${esc(v.title)}</h3>
@@ -89,28 +105,21 @@ function chipRow(label, name, values) {
 </div>`;
 }
 
-// Filtering is eight lines of DOM work; it does not need a framework or a
+// Filtering is a few lines of DOM work; it does not need a framework or a
 // build step, and it degrades to "everything shown" if JS is off.
 const FILTER_SCRIPT = `<script>
 (function () {
-  var state = { collection: '', level: '' };
   var panels = Array.prototype.slice.call(document.querySelectorAll('.panel'));
-  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
   var empty = document.querySelector('.empty');
 
-  function apply() {
+  function apply(level) {
+    var shown = 0;
     panels.forEach(function (p) {
-      var okCollection = !state.collection || p.dataset.collection === state.collection;
-      var okLevel = !state.level || p.dataset.levels.split('|').indexOf(state.level) !== -1;
-      p.hidden = !(okCollection && okLevel);
+      var ok = !level || p.dataset.levels.split('|').indexOf(level) !== -1;
+      p.hidden = !ok;
+      if (ok) shown++;
     });
-    var anyShown = false;
-    sections.forEach(function (s) {
-      var shown = s.querySelectorAll('.panel:not([hidden])').length;
-      s.hidden = shown === 0;
-      if (shown) anyShown = true;
-    });
-    if (empty) empty.style.display = anyShown ? 'none' : 'block';
+    if (empty) empty.style.display = shown ? 'none' : 'block';
   }
 
   document.querySelectorAll('.filter-group').forEach(function (group) {
@@ -120,28 +129,13 @@ const FILTER_SCRIPT = `<script>
       group.querySelectorAll('.chip').forEach(function (c) {
         c.setAttribute('aria-pressed', String(c === chip));
       });
-      state[group.dataset.filter] = chip.dataset.value;
-      apply();
+      apply(chip.dataset.value);
     });
   });
 })();
 </script>`;
 
 function indexPage() {
-  const sections = collections
-    .map((c) => {
-      const inSection = viewers.filter((v) => v.collection === c);
-      if (!inSection.length) return '';
-      return `<section data-section="${esc(c)}">
-  <div class="section-head"><h2>${esc(c)}</h2><span class="rule"></span></div>
-  <div class="grid">
-${inSection.map(panel).join('\n')}
-  </div>
-</section>`;
-    })
-    .filter(Boolean)
-    .join('\n\n');
-
   const body = `<header class="masthead"><div class="wrap">
   <h1 class="wordmark">${esc(site.title)}</h1>
   <p class="strap">${esc(site.strap)}</p>
@@ -149,13 +143,14 @@ ${inSection.map(panel).join('\n')}
 </div></header>
 
 <nav class="filters"><div class="wrap">
-${chipRow('Collection', 'collection', collections)}
 ${chipRow('Level', 'level', levels)}
 </div></nav>
 
 <main><div class="wrap">
-${sections}
-<p class="empty">Nothing matches both filters. Try widening one.</p>
+<div class="grid">
+${viewers.map(panel).join('\n')}
+</div>
+<p class="empty">No viewer carries a lesson idea at that level yet.</p>
 </div></main>`;
 
   return page({
@@ -190,12 +185,22 @@ function lesson(l) {
 }
 
 function viewerPage(v) {
-  const launch = v.live
-    ? `<a class="launch" href="${esc(v.url)}">Launch the viewer →</a>`
-    : `<span class="launch disabled" aria-disabled="true">Not yet deployed</span>
-     <p class="launch-note">This one is built but not yet published. It runs locally from
-     <a href="${esc(v.repo)}">the repository</a>; the launch link will point at
-     <code>${esc(v.url)}</code> once it is deployed.</p>`;
+  // Three states, not two: deployed; built and in a repo but unpublished; and
+  // built on someone's laptop with no repository behind it yet.
+  let launch;
+  if (v.live) {
+    launch = `<a class="launch" href="${esc(v.url)}">Launch the viewer →</a>`;
+  } else if (v.repo) {
+    launch = `<span class="launch disabled" aria-disabled="true">Not yet deployed</span>
+     <p class="launch-note">Built but not yet published. It runs locally from
+     <a href="${esc(v.repo)}">the repository</a>${
+       v.url ? `; the launch link will point at <code>${esc(v.url)}</code> once it is deployed` : ''
+     }.</p>`;
+  } else {
+    launch = `<span class="launch disabled" aria-disabled="true">Not yet deployed</span>
+     <p class="launch-note">A working local page with no repository behind it yet, so there is
+     nothing to link to. ${esc(v.status ?? '')}</p>`;
+  }
 
   const shot = v.thumb
     ? `<img src="../assets/thumbs/${esc(v.thumb)}" alt="${esc(v.title)}">`
@@ -240,7 +245,11 @@ function viewerPage(v) {
     </div>
 
     <h2>Source</h2>
-    <div class="prose"><p>Built from <a href="${esc(v.repo)}">${esc(v.repo.replace('https://github.com/', ''))}</a>.</p></div>
+    <div class="prose"><p>${
+      v.repo
+        ? `Built from <a href="${esc(v.repo)}">${esc(v.repo.replace('https://github.com/', ''))}</a>.`
+        : 'No public repository yet.'
+    }</p></div>
   </article>
 </div></main>`;
 

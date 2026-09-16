@@ -136,30 +136,6 @@ a:hover { color: #a8cef0; }
 
 main { padding: 40px 0 72px; }
 
-.section-head {
-  margin: 36px 0 18px;
-  display: flex;
-  align-items: baseline;
-  gap: 14px;
-}
-
-.section-head:first-child { margin-top: 0; }
-
-.section-head h2 {
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  margin: 0;
-}
-
-.section-head .rule {
-  flex: 1;
-  height: 1px;
-  background: var(--line);
-}
-
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -417,6 +393,52 @@ footer {
 }
 
 footer .wrap > p { margin: 0 0 10px; max-width: 74ch; }
+
+/* Each logo sits on its own light chip. Institutional logos are drawn for
+   white paper -- some are dark ink on transparency, one ships with a white
+   plate baked in -- and dropping that mix straight onto a dark page makes
+   half of them vanish. One chip per logo is the only treatment that works for
+   all six without recolouring anyone's brand. Height is what's held constant,
+   not width, since the aspect ratios range from square to 5:1. */
+.partners {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 26px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+}
+
+.partner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 54px;
+  padding: 0 16px;
+  background: #f4f5f7;
+  border-radius: 6px;
+  text-decoration: none;
+  opacity: 0.82;
+  transition: opacity 0.15s;
+}
+
+.partner:hover { opacity: 1; }
+
+.partner img {
+  max-height: 34px;
+  max-width: 170px;
+  width: auto;
+  display: block;
+}
+
+/* Stands in for a logo file that is not in assets/logos/ yet. */
+.wordmark-fallback {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #2b3038;
+}
 
 /* ---- responsive -------------------------------------------------------- */
 

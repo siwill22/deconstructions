@@ -1,5 +1,5 @@
-// The two Spilhaus pages: D3 rather than WebGL, and about projection rather
-// than time. Neither is deployed yet.
+// The Spilhaus page: D3 rather than WebGL, and about projection rather than
+// time. Not deployed yet.
 
 const SM = 'https://siwill22.github.io/StoryMaps/';
 
@@ -59,33 +59,11 @@ export default [
           'What does the area of no-data tell you about how much ocean floor has been destroyed?',
         ],
       },
-    ],
-  },
-  {
-    slug: 'spilhaus-viewer',
-    title: 'Spilhaus world ocean map',
-    tagline: 'The projection on its own, stripped to graticule and coastline.',
-    collection: 'Map projections',
-    kind: 'Interactive map',
-    url: SM + 'spilhaus-viewer/',
-    live: false,
-    repo: 'https://github.com/siwill22/StoryMaps',
-    thumb: 'spilhaus-viewer.jpg',
-    summary: [
-      'The Spilhaus projection with nothing on it but a 30° graticule and the world\'s coastlines. No data layer, no time axis, no interpretation.',
-      'Handed to a class cold, that emptiness makes it a puzzle: the continents are recognisable one by one but the arrangement is not, and working out what has been done to the globe is a better introduction to projection than any amount of being told.',
-    ],
-    contents: [
-      ['Graticule', 'Latitude and longitude at 30° intervals, so the distortion can be seen directly.'],
-      ['Coastlines', 'The continents, sliced and rearranged around the edge of the square.'],
-    ],
-    controls: ['Static map: open it and look.'],
-    lessons: [
       {
         title: 'What has been done to this globe?',
         level: 'Senior secondary',
         duration: '30 min starter',
-        body: 'Show the map with no explanation and let the class reverse-engineer it.',
+        body: 'Show the map with no explanation and let the class reverse-engineer the projection before you name it.',
         steps: [
           'Project the map and ask students to name as many continents as they can.',
           'Ask where the poles are, and have them find both on the graticule.',
@@ -96,18 +74,6 @@ export default [
           'Whose map is a normal world map, and what does its centre say about who drew it?',
           'If you were a fish, which projection would you want?',
         ],
-      },
-      {
-        title: 'The edge is the same place twice',
-        level: 'Undergraduate',
-        duration: '30 min',
-        body: 'Tracing the square\'s boundary is the quickest way to make the topology of a projection concrete.',
-        steps: [
-          'Pick a coastal point that appears twice on the square\'s edge and find both copies.',
-          'Trace the edge and record where the map repeats.',
-          'Sketch how the square would have to be folded to close the sphere back up.',
-        ],
-        discussion: ['Which properties can a flat map preserve at once, and which combinations are impossible?'],
       },
     ],
   },

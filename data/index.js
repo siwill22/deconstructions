@@ -1,33 +1,49 @@
 // The catalog: everything the site knows about, in the order it is shown.
 //
-// Adding a viewer means adding an entry to one of these three files and
-// dropping a JPEG into assets/thumbs/. There is no other step.
+// Adding a viewer means adding an entry to one of these files and dropping a
+// JPEG into assets/thumbs/. There is no other step.
 
 import geode from './geode.js';
 import storymaps from './storymaps.js';
+import surveys from './surveys.js';
 import maps from './maps.js';
 
-export const viewers = [...geode, ...storymaps, ...maps];
+// One flat grid, in this order. The groupings below are labels on a page, not
+// sections of the index.
+export const viewers = [...geode, ...storymaps, ...surveys, ...maps];
 
-// The order sections appear on the index page.
-export const collections = ['Globe viewers', 'Story maps', 'Map projections'];
+// Shown as the breadcrumb on each viewer's own page. The build rejects a
+// record whose collection is not one of these.
+export const collections = ['Globe viewers', 'Story maps', 'Survey history', 'Map projections'];
 
 // Audience levels, in the order the filter chips show them. A viewer carries
 // a level if any of its lesson ideas is written for that level.
 export const levels = ['Senior secondary', 'Undergraduate', 'Outreach'];
 
+// The footer logo row. `logo` is a file in assets/logos/; a record with
+// `logo: null` falls back to its name set in type, so a missing file is a
+// visible gap to fill rather than a broken image.
+export const partners = [
+  { name: 'GPlates', url: 'https://www.gplates.org', logo: 'gplates.png' },
+  { name: 'AuScope', url: 'https://www.auscope.org.au', logo: 'auscope.png' },
+  { name: 'EarthByte', url: 'https://www.earthbyte.org', logo: 'earthbyte.png' },
+  { name: 'University of Tasmania', url: 'https://www.utas.edu.au', logo: null, short: 'UTAS' },
+  { name: 'Institute for Marine and Antarctic Studies', url: 'https://www.imas.utas.edu.au', logo: null, short: 'IMAS' },
+  { name: 'University of Sydney', url: 'https://www.sydney.edu.au', logo: 'usyd.svg' },
+];
+
 export const site = {
   title: 'elstir',
   strap: 'Earth-science viewers, and what to teach with them.',
   intro: [
-    'Thirteen interactive viewers of the Earth through deep time: mantle structure, plate reconstructions, paleoclimate, fossils, zircons, flood basalts and the ocean floor. Each one runs in a browser with nothing to install.',
+    'Fourteen interactive viewers of the Earth through deep time: mantle structure, plate reconstructions, paleoclimate, fossils, zircons, flood basalts, the ocean floor, and four centuries of magnetic survey. Each one runs in a browser with nothing to install.',
     'Every viewer here has its own page: what is actually in it, how to drive it, and a handful of lesson plan ideas pitched at senior secondary, undergraduate or general audiences. Pick a panel to start.',
   ],
   // Elstir is Proust's painter, the one who paints a seascape so that the sea
   // reads as land and the land as sea. Good name for a shelf of maps that keep
   // rearranging the world.
   footer: [
-    'Built by Simon Williams. The viewers themselves live in the <a href="https://github.com/siwill22/Geode">Geode</a> and <a href="https://github.com/siwill22/StoryMaps">StoryMaps</a> repositories; this site is the shelf they sit on.',
+    'The viewers live in the <a href="https://github.com/siwill22/Geode">Geode</a>, <a href="https://github.com/siwill22/StoryMaps">StoryMaps</a> and <a href="https://github.com/siwill22/marine-survey-globe">marine-survey-globe</a> repositories; this site is the shelf they sit on.',
     'Lesson plan ideas are starting points, not vetted curriculum material. Take what is useful and rewrite the rest.',
   ],
 };
