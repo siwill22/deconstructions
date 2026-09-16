@@ -27,21 +27,18 @@ export const partners = [
   { name: 'GPlates', url: 'https://www.gplates.org', logo: 'gplates.png' },
   { name: 'AuScope', url: 'https://www.auscope.org.au', logo: 'auscope.png' },
   { name: 'EarthByte', url: 'https://www.earthbyte.org', logo: 'earthbyte.png' },
-  { name: 'University of Tasmania', url: 'https://www.utas.edu.au', logo: null, short: 'UTAS' },
-  { name: 'Institute for Marine and Antarctic Studies', url: 'https://www.imas.utas.edu.au', logo: null, short: 'IMAS' },
+  { name: 'University of Tasmania', url: 'https://www.utas.edu.au', logo: 'utas.svg' },
+  { name: 'Institute for Marine and Antarctic Studies', url: 'https://www.imas.utas.edu.au', logo: 'imas.png' },
   { name: 'University of Sydney', url: 'https://www.sydney.edu.au', logo: 'usyd.svg' },
 ];
 
 export const site = {
-  title: 'elstir',
+  title: 'GPlates Knowledge Hub',
   strap: 'Earth-science viewers, and what to teach with them.',
   intro: [
     'Fourteen interactive viewers of the Earth through deep time: mantle structure, plate reconstructions, paleoclimate, fossils, zircons, flood basalts, the ocean floor, and four centuries of magnetic survey. Each one runs in a browser with nothing to install.',
     'Every viewer here has its own page: what is actually in it, how to drive it, and a handful of lesson plan ideas pitched at senior secondary, undergraduate or general audiences. Pick a panel to start.',
   ],
-  // Elstir is Proust's painter, the one who paints a seascape so that the sea
-  // reads as land and the land as sea. Good name for a shelf of maps that keep
-  // rearranging the world.
   footer: [
     'The viewers live in the <a href="https://github.com/siwill22/Geode">Geode</a>, <a href="https://github.com/siwill22/StoryMaps">StoryMaps</a> and <a href="https://github.com/siwill22/marine-survey-globe">marine-survey-globe</a> repositories; this site is the shelf they sit on.',
     'Lesson plan ideas are starting points, not vetted curriculum material. Take what is useful and rewrite the rest.',
