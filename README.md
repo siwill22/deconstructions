@@ -1,19 +1,5 @@
 # elstir
 
-*Earth-science viewers, and what to teach with them.*
-
-A shelf for the interactive viewers built in
-[Geode](https://github.com/siwill22/Geode) and
-[StoryMaps](https://github.com/siwill22/StoryMaps). The index page is a grid of
-panels, three to a row, each showing a still from the viewer it points at. A
-panel leads to a page describing what is actually in that viewer, how to drive
-it, and a handful of lesson plan ideas pitched at senior secondary,
-undergraduate or general audiences.
-
-The site hosts nothing but descriptions and images. The viewers themselves stay
-in their own repositories and are launched at their own URLs — this repo would
-otherwise have to carry a few hundred megabytes of reconstruction archives it
-has no business owning.
 
 ## Structure
 
@@ -40,8 +26,6 @@ node build.mjs          # writes index.html and viewers/*.html
 npm run serve           # builds, then serves on http://localhost:8080
 ```
 
-No dependencies, no bundler, no framework. The whole site is eighteen records
-and two page templates.
 
 ## Adding a viewer
 
@@ -69,8 +53,3 @@ error (an orphaned `catch` block) that stops the page loading, and its globe
 creates its WebGL context without `preserveDrawingBuffer`, so a headless
 screenshot comes back empty even once that is fixed.
 
-## The name
-
-Elstir is Proust's painter, the one whose seascapes are built on a metaphor
-that makes the sea read as land and the land as sea. A reasonable name for a
-shelf of maps that keep rearranging the world.
