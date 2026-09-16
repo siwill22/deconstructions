@@ -2,10 +2,10 @@
 //
 //   node build.mjs
 //
-// Deliberately a plain script with template literals and no dependencies:
-// the whole site is eighteen records and two page shapes, and a framework
-// would be more machinery than content. Output is gitignored -- the GitHub
-// Actions workflow runs this and publishes the result.
+// A plain script with template literals and no dependencies: the whole site is
+// thirteen records and two page shapes, and a framework would be more machinery
+// than content. Output is gitignored; the GitHub Actions workflow runs this and
+// publishes the result.
 
 import { mkdir, writeFile, rm } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
@@ -29,7 +29,7 @@ const levelsOf = (v) => levels.filter((l) => v.lessons.some((les) => les.level =
 /**
  * Page chrome. `depth` is how far the page sits below the site root, so the
  * same template works for /index.html and /viewers/foo.html without any
- * server-side base path -- which also means the built site opens correctly
+ * server-side base path, which also means the built site opens correctly
  * from a file:// path or from a project-scoped GitHub Pages URL.
  */
 function page({ title, description, depth, body, script = '' }) {
@@ -159,7 +159,7 @@ ${sections}
 </div></main>`;
 
   return page({
-    title: `${site.title} — ${site.strap}`,
+    title: `${site.title} · ${site.strap}`,
     description: site.strap,
     depth: 0,
     body,
@@ -245,7 +245,7 @@ function viewerPage(v) {
 </div></main>`;
 
   return page({
-    title: `${v.title} — ${site.title}`,
+    title: `${v.title} · ${site.title}`,
     description: v.tagline,
     depth: 1,
     body,

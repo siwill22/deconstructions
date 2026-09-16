@@ -1,8 +1,8 @@
 // The Geode globe viewers: https://github.com/siwill22/Geode
 //
-// All nine share one three.js/Vite engine (viewer/src/core) and the same
-// archive format, so the controls below repeat deliberately -- a class that
-// learns them on one viewer can use any of the others.
+// All five share one three.js/Vite engine (viewer/src/core) and the same
+// archive format, so the controls below repeat: a class that learns them on
+// one viewer can use any of the others.
 
 const GEODE = 'https://siwill22.github.io/Geode/';
 
@@ -18,7 +18,7 @@ export default [
     repo: 'https://github.com/siwill22/Geode',
     thumb: 'mantle.jpg',
     summary: [
-      'Seismic tomography and mantle-convection models rendered as a real 3D volume inside a rotating globe. You draw a polygon on the surface, and the viewer cuts the Earth away along it — the walls and floor of the cut are textured with the model interpolated onto the cut surface, so the slab or plume you are looking at is the model\'s own values, not a pre-rendered cross-section.',
+      'Seismic tomography and mantle-convection models rendered as a real 3D volume inside a rotating globe. You draw a polygon on the surface, and the viewer cuts the Earth away along it. The walls and floor of the cut are textured with the model interpolated onto the cut surface, so the slab or plume you are looking at is the model\'s own values, not a pre-rendered cross-section.',
       'Reconstructed coastlines and plate boundaries ride on the surface, so a subducted slab at 1000 km depth can be compared with where the trench that fed it actually was.',
     ],
     contents: [
@@ -116,7 +116,7 @@ export default [
         title: 'Continentality, measured',
         level: 'Senior secondary',
         duration: '50 min',
-        body: 'Seasonality — the gap between the warmest and coldest month — is the cleanest single demonstration that big continents behave differently from oceans.',
+        body: 'Seasonality, the gap between the warmest and coldest month, is the cleanest single demonstration that big continents behave differently from oceans.',
         steps: [
           'Switch the variable to seasonality at the present day and describe the pattern in one sentence.',
           'Move to 250 Ma, when Pangaea is assembled, and describe it again.',
@@ -154,7 +154,7 @@ export default [
         ],
         discussion: [
           'Does agreement between two models make a result more likely to be true?',
-          'What do the models share — boundary conditions, geography, solar constant — that would make them agree for the wrong reason?',
+          'What do the models share (boundary conditions, geography, solar constant) that would make them agree for the wrong reason?',
         ],
       },
     ],
@@ -222,21 +222,21 @@ export default [
     repo: 'https://github.com/siwill22/Geode',
     thumb: 'old-map.jpg',
     summary: [
-      'The same reconstruction data as the other viewers, rendered in the visual language of an eighteenth-century chart: pen coastlines, a graded wash running inland from the shore, nested offshore rings in place of bathymetry, hachured mountain glyphs standing where the reconstruction puts an orogen, and volcano symbols along ridges, over deep plumes and at large igneous province eruption sites — all on a stained and folded sheet.',
+      'The same reconstruction data as the other viewers, rendered in the visual language of an eighteenth-century chart: pen coastlines, a graded wash running inland from the shore, nested offshore rings in place of bathymetry, hachured mountain glyphs standing where the reconstruction puts an orogen, and volcano symbols along ridges, over deep plumes and at large igneous province eruption sites, all on a stained and folded sheet.',
       'The ink is measured in kilometres, not pixels: the coastal wash is 400 km wide and the rings sit at fixed distances offshore, so zooming in widens them exactly as it widens the continents. The map does not change when you look at it more closely.',
-      'Pedagogically this is the viewer that makes cartographic convention visible. Every other map in the set uses a colour ramp that students read without noticing; this one uses marks they have to be told how to read, which is a good way to make them notice that the ramps needed telling too.',
+      'This is the viewer that makes cartographic convention visible. Every other map in the set uses a colour ramp that students read without noticing; this one uses marks they have to be told how to read, which is a good way to make them notice that the ramps needed telling too.',
     ],
     contents: [
       ['Engraved coastlines', 'Pen-line coasts with a graded 0–400 km wash inland.'],
       ['Offshore rings', 'Nested contours at 100, 200, 350, 550, 800 and 1200 km from land.'],
       ['Hachured mountains', 'Glyphs placed where the reconstruction says an orogen stands.'],
       ['Volcanoes', 'Symbols along mid-ocean ridges, above deep mantle plumes, and at LIP eruption sites at their eruption time.'],
-      ['One time slider', 'Deliberately the only control that changes the geography.'],
+      ['One time slider', 'The only control that changes the geography.'],
       ['Projections', 'Globe, Robinson and Plate Carrée, with the ink scaling correctly in each.'],
     ],
     controls: [
       'Drag to rotate or pan, scroll to zoom.',
-      'One time slider — scrub through the reconstruction.',
+      'One time slider: scrub through the reconstruction.',
       'Projection switch between globe and flat map.',
     ],
     lessons: [
@@ -281,9 +281,9 @@ export default [
     repo: 'https://github.com/siwill22/Geode',
     thumb: 'paleobiology.jpg',
     summary: [
-      'Fossil occurrences from the Paleobiology Database, reconstructed to the position of the crust they were collected from, aggregated into equal-area cells on the sphere. Equal-area binning is load-bearing rather than incidental — a plain latitude/longitude grid inflates polar cells and would bend the latitudinal-diversity signal the coral case study depends on.',
+      'Fossil occurrences from the Paleobiology Database, reconstructed to the position of the crust they were collected from, aggregated into equal-area cells on the sphere. The binning has to be equal-area: a plain latitude/longitude grid inflates polar cells, which would bend the latitudinal-diversity signal the coral case study depends on.',
       'The viewer is built around two case studies: corals through the Phanerozoic, and a biotic interchange where the plate reconstruction itself is the explanation.',
-      'The diversity curve is deliberately raw. Sampled-in-bin genus counts are drawn on the same panel as the number of occurrences and the number of collections, so the sampling confound sits next to the signal rather than being silently corrected away.',
+      'The diversity curve is raw. Sampled-in-bin genus counts are drawn on the same panel as the number of occurrences and the number of collections, so the sampling confound sits next to the signal rather than being silently corrected away.',
     ],
     contents: [
       ['Aggregate glyphs', 'One glyph per occupied equal-area cell, pie-divided by group and/or sized by richness.'],
@@ -341,229 +341,7 @@ export default [
           'Scrub forward through the closure.',
           'Show the same region afterwards, with the groups mixed.',
         ],
-        discussion: ['What is a barrier for a fish is a highway for a mammal — what else works this way?'],
-      },
-    ],
-  },
-  {
-    slug: 'single-model-globe',
-    title: 'Crustal deformation globe',
-    tagline: 'One model, one globe, no comparison controls.',
-    collection: 'Globe viewers',
-    kind: 'Globe viewer',
-    url: GEODE + 'globe.html',
-    live: true,
-    repo: 'https://github.com/siwill22/Geode',
-    thumb: 'single-model-globe.jpg',
-    summary: [
-      'The simplest of the four generated Geode wrappers: one model, drawn on a reconstructed globe, with nothing to compare it against. The checked-in example carries the Cao et al. (2024) crustal deformation model — horizontal divergence, effective strain rate and deformation style.',
-      'Because the deliberate absence of comparison controls makes it the least cluttered viewer in the set, this is a good first one to hand to a class that has not used any of them before.',
-    ],
-    contents: [
-      ['Horizontal divergence', 'Where crust is pulling apart and where it is being shortened.'],
-      ['Effective strain rate', 'How fast the crust is deforming, over a wide dynamic range.'],
-      ['Deformation style', 'A categorical field rather than a continuous one, so it needs a different kind of legend.'],
-      ['Reconstructed surface layers', 'Coastlines and plate boundaries through time.'],
-      ['Honest no-data', 'Cells the model does not cover are drawn as no-data, not as zero.'],
-    ],
-    controls: [
-      'Drag to rotate, scroll to zoom.',
-      'Time slider for the reconstruction.',
-      'Variable and colour ramp selectors in the control panel.',
-    ],
-    lessons: [
-      {
-        title: 'Deformation is not just at plate boundaries',
-        level: 'Undergraduate',
-        duration: '60 min tutorial',
-        body: 'The rigid-plate model taught in first year says deformation happens at edges. This model says otherwise, in places students can name.',
-        steps: [
-          'Turn on plate boundaries and effective strain rate at the present day.',
-          'Find three regions with high strain rate that are not on a plate boundary line.',
-          'For each, name the tectonic setting — Tibet, the Basin and Range, the Aegean.',
-        ],
-        discussion: [
-          'Where does the rigid-plate approximation earn its keep, and where does it fail?',
-          'How would you decide how wide a "boundary" is?',
-        ],
-      },
-      {
-        title: 'Grey means we do not know',
-        level: 'Senior secondary',
-        duration: '30 min',
-        body: 'A short exercise on the difference between a value of zero and no value at all.',
-        steps: [
-          'Show the model with no-data cells rendered in grey.',
-          'Ask which parts of the world are grey, and why those parts in particular.',
-          'Ask what the map would imply if those cells had been coloured as zero instead.',
-        ],
-        discussion: ['Whose responsibility is it that a reader does not mistake missing data for a measurement?'],
-      },
-    ],
-  },
-  {
-    slug: 'model-comparison-globe',
-    title: 'Model comparison globe',
-    tagline: 'Two models, two variables, switched from a dropdown.',
-    collection: 'Globe viewers',
-    kind: 'Globe viewer',
-    url: GEODE + 'groupGlobe.html',
-    live: true,
-    repo: 'https://github.com/siwill22/Geode',
-    thumb: 'model-comparison-globe.jpg',
-    summary: [
-      'Several models from one comparison family on a single globe, switched from dropdowns. The checked-in example pairs Cao et al. (2024) and Müller et al. (2019) across deformation, seafloor age and heat flux.',
-      'Switching the model swaps the whole map — continents, boundaries and the field together. That is a rule in this engine rather than a convenience: drawing one model\'s continents underneath another model\'s field would put features in the wrong place and make the model control look like it did less than it does.',
-    ],
-    contents: [
-      ['Two plate models', 'Cao et al. (2024) and Müller et al. (2019), with their own geometry each.'],
-      ['Deformation fields', 'Horizontal divergence, strain rate, deformation style.'],
-      ['Age and heat flux', 'Seafloor age with heat flux derived from it, as a composite layer.'],
-      ['Whole-map model swap', 'Changing the model moves every layer, not just the field.'],
-    ],
-    controls: [
-      'Drag to rotate, scroll to zoom.',
-      'Model dropdown and variable dropdown, independently.',
-      'Time slider for the reconstruction.',
-    ],
-    lessons: [
-      {
-        title: 'Same question, two models',
-        level: 'Undergraduate',
-        duration: '90 min practical',
-        body: 'Students answer one quantitative question twice, once under each model, and report the spread rather than a single number.',
-        steps: [
-          'Pick a region and a time, and measure something from the map — the width of a deforming belt, say.',
-          'Switch the model and measure the same thing again without changing anything else.',
-          'Report the answer as a range, and identify what in the model construction produced the difference.',
-        ],
-        discussion: [
-          'Is the spread between two models an uncertainty estimate? What would it take to make it one?',
-          'Which parts of the two models are actually independent?',
-        ],
-      },
-      {
-        title: 'Seafloor age is a clock, heat flow is its consequence',
-        level: 'Senior secondary',
-        duration: '50 min',
-        body: 'Switch between age and heat flux on the same globe and derive the relationship from the maps.',
-        steps: [
-          'Display seafloor age and describe the pattern either side of a mid-ocean ridge.',
-          'Switch to heat flux and describe that pattern.',
-          'Sample five points at increasing distance from a ridge and tabulate age against heat flux.',
-        ],
-        discussion: ['Why does the ocean floor get deeper as it gets older, and is that the same physics?'],
-      },
-    ],
-  },
-  {
-    slug: 'reconstruction',
-    title: 'Plate reconstruction globe',
-    tagline: 'Coastlines and boundaries moving through time, and nothing else.',
-    collection: 'Globe viewers',
-    kind: 'Globe viewer',
-    url: GEODE + 'reconstruction.html',
-    live: true,
-    repo: 'https://github.com/siwill22/Geode',
-    thumb: 'geode-reconstruction.jpg',
-    summary: [
-      'One reconstruction model\'s own coastlines and plate boundaries, with no numerical field over the top. The checked-in example is Müller et al. (2019).',
-      'This is the plainest possible view of a plate model, and that plainness is the reason to use it in teaching: there is no colour ramp to interpret and no data layer to argue about, only the geometry and the clock.',
-    ],
-    contents: [
-      ['Reconstructed coastlines', 'Continental outlines at any time in the model range.'],
-      ['Plate boundaries', 'Ridges, trenches and transforms, with subduction polarity marked.'],
-      ['A time slider', 'The only control that changes the world.'],
-      ['Projections', 'Globe, Robinson and Plate Carrée.'],
-    ],
-    controls: [
-      'Drag to rotate, scroll to zoom.',
-      'Time slider through the model range.',
-      'Projection switch.',
-    ],
-    lessons: [
-      {
-        title: 'Assemble and break a supercontinent',
-        level: 'Senior secondary',
-        duration: '50 min',
-        body: 'The core plate-tectonics lesson, with the model doing the animating and the students doing the describing.',
-        steps: [
-          'Start at 250 Ma with Pangaea assembled and have students sketch it.',
-          'Step forward in 50 Myr intervals, sketching each time.',
-          'Mark on each sketch where a new ocean has opened.',
-          'Identify which present-day coastlines were once joined.',
-        ],
-        discussion: [
-          'Which pieces of evidence available to Wegener would you be able to check on this map?',
-          'What does the model know that Wegener did not?',
-        ],
-      },
-      {
-        title: 'Run the clock forward on your own coastline',
-        level: 'Outreach',
-        duration: '10 min at a stand',
-        body: 'Find the visitor\'s home town, then run time backwards and watch it travel.',
-        steps: [
-          'Zoom to the visitor\'s home and mark it.',
-          'Scrub back to 200 Ma and see what latitude it was at.',
-          'Ask what the climate would have been there.',
-        ],
-        discussion: ['How fast is that, in centimetres a year? About the speed your fingernails grow.'],
-      },
-    ],
-  },
-  {
-    slug: 'reconstruction-comparison',
-    title: 'Reconstruction comparison globe',
-    tagline: 'Two published plate models, switched on one globe.',
-    collection: 'Globe viewers',
-    kind: 'Globe viewer',
-    url: GEODE + 'reconstructionGroup.html',
-    live: true,
-    repo: 'https://github.com/siwill22/Geode',
-    thumb: 'geode-reconstruction-group.jpg',
-    summary: [
-      'Several reconstruction models\' geometry on one globe, switched from a single dropdown. The checked-in example pairs Müller et al. (2019) with Seton et al. (2012).',
-      'Two published models of the same Earth disagree, and this viewer exists to make that disagreement visible and specific rather than a footnote. At 0 Ma they are identical; the older the reconstruction, the further apart they drift.',
-    ],
-    contents: [
-      ['Müller et al. (2019)', 'A global model with deforming plate boundaries.'],
-      ['Seton et al. (2012)', 'An earlier global model built on different data and different assumptions.'],
-      ['One dropdown', 'Switching the model swaps every layer together.'],
-      ['Projections', 'Globe, Robinson and Plate Carrée.'],
-    ],
-    controls: [
-      'Drag to rotate, scroll to zoom.',
-      'Model dropdown.',
-      'Time slider through the model range.',
-    ],
-    lessons: [
-      {
-        title: 'How far apart are two plate models?',
-        level: 'Undergraduate',
-        duration: '60 min practical',
-        body: 'Quantify the disagreement rather than describe it, and show that it grows with age.',
-        steps: [
-          'At 0 Ma, confirm the two models are effectively identical.',
-          'At 50, 100 and 150 Ma, pick one identifiable point on a continent and estimate its displacement between models.',
-          'Plot displacement against reconstruction age.',
-        ],
-        discussion: [
-          'Why does the difference grow rather than stay constant?',
-          'Which regions disagree most, and what do they have in common?',
-        ],
-      },
-      {
-        title: 'What is a reconstruction actually built from?',
-        level: 'Undergraduate',
-        duration: '60 min seminar',
-        body: 'Use the visible differences as a way into the evidence base: magnetic anomalies, fracture zones, hotspot tracks and paleomagnetism, each with its own reach and its own blind spot.',
-        steps: [
-          'Identify a region where the two models agree closely and hypothesise why.',
-          'Identify one where they do not, and hypothesise why.',
-          'Check the hypotheses against the ocean-floor age distribution — agreement tends to follow preserved seafloor.',
-        ],
-        discussion: ['Longitude in deep time is the hardest quantity to constrain. Why?'],
+        discussion: ['What is a barrier for a fish is a highway for a mammal. What else works this way?'],
       },
     ],
   },

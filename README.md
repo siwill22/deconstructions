@@ -1,12 +1,11 @@
 # elstir
 
-
 ## Structure
 
 ```
-data/           the catalog -- one record per viewer, all the prose lives here
-  geode.js        the nine Geode globe viewers
-  storymaps.js    the seven StoryMaps pages
+data/           the catalog: one record per viewer, all the prose lives here
+  geode.js        the five Geode globe viewers
+  storymaps.js    the six StoryMaps pages
   maps.js         the two Spilhaus pages
   index.js        concatenates them, plus site-level copy
 assets/
@@ -25,7 +24,6 @@ builds them on every push to `main`, so what is published is always what
 node build.mjs          # writes index.html and viewers/*.html
 npm run serve           # builds, then serves on http://localhost:8080
 ```
-
 
 ## Adding a viewer
 
@@ -46,10 +44,9 @@ saying where it will live. Flip the flag when the viewer's own repo deploys.
 ## Panel images
 
 Most come from the `shots-*` directories in the Geode repo, converted to JPEG
-at 1100 px. The four that had no existing still were captured with Playwright
-against the live or locally served page. One page —
-southern-ocean-gateways — has no image yet: its `js/story.js` has a syntax
-error (an orphaned `catch` block) that stops the page loading, and its globe
-creates its WebGL context without `preserveDrawingBuffer`, so a headless
-screenshot comes back empty even once that is fixed.
+at 1100 px. The ones with no existing still were captured with Playwright
+against the live or locally served page. A page whose globe creates its WebGL
+context without `preserveDrawingBuffer` cannot be captured that way at all: the
+screenshot comes back as an empty canvas, and the record needs `thumb: null`
+until someone grabs a still by hand.
 

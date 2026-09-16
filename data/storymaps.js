@@ -1,9 +1,10 @@
 // The StoryMaps pages: https://github.com/siwill22/StoryMaps
 //
 // Four of these (plate-boundaries, zircons, detrital-zircons, tectonic-co2)
-// are one family sharing a globe, a clock and a legend; the other two are
-// scroll-driven narratives on a shader globe. None are deployed yet -- the
-// `live: false` flag is what puts the "not yet deployed" badge on the card.
+// are one family sharing a globe, a clock and a legend; lips and
+// southeast-tasmania are scroll-driven narratives. None are deployed yet, so
+// each record carries `live: false`, which puts the "not yet deployed" badge
+// on its card.
 
 const SM = 'https://siwill22.github.io/StoryMaps/';
 
@@ -19,7 +20,7 @@ export default [
     repo: 'https://github.com/siwill22/StoryMaps',
     thumb: 'plate-boundaries.jpg',
     summary: [
-      'Plate boundaries resolved from the Müller et al. (2019) topologies at every step from 250 Ma to the present — 251 frames at 1 Myr spacing — drawn as vector lines on a rotatable globe. Subduction zones carry the standard triangle decoration on the overriding-plate side, so polarity is readable at a glance.',
+      'Plate boundaries resolved from the Müller et al. (2019) topologies at every step from 250 Ma to the present, 251 frames at 1 Myr spacing, drawn as vector lines on a rotatable globe. Subduction zones carry the standard triangle decoration on the overriding-plate side, so polarity is readable at a glance.',
       'Frames cut hard rather than interpolating. A plate boundary network is a topology: boundaries appear, vanish and change type between frames, and smoothing between two of them would invent geometry that the model does not contain.',
       'A chart above the time slider tracks total boundary length through time on the same axis, so the map and the summary statistic move together.',
     ],
@@ -28,12 +29,12 @@ export default [
       ['Subduction polarity', 'Triangles on the overriding side, so which plate goes under is never ambiguous.'],
       ['Velocity arrows', 'Plate motion vectors with a scale bar pinned to a round speed and resized as you zoom.'],
       ['Mineral deposits', 'Base metal deposits shown within a window around their age; hover for detail, click to pin.'],
-      ['Boundary length through time', 'A chart on the same axis as the scrubber — hover to read, click or drag to seek.'],
+      ['Boundary length through time', 'A chart on the same axis as the scrubber. Hover to read, click or drag to seek.'],
       ['Deep links', '#lon,lat,zoom,time in the URL pins the view, which makes reproducible screenshots easy to set as homework.'],
     ],
     controls: [
       'Drag to rotate, scroll to zoom.',
-      'Scrub the slider or press ▶ — 250 Ma on the left, 0 Ma on the right.',
+      'Scrub the slider or press ▶. The axis runs 250 Ma on the left to 0 Ma on the right.',
       'Click legend rows to toggle boundary types, velocity arrows or deposits.',
       'Hover a deposit for detail, click to pin; rest on a cluster and it fans apart.',
     ],
@@ -95,7 +96,7 @@ export default [
     thumb: 'lips.jpg',
     summary: [
       'Large igneous provinces reconstructed on a rotating globe, scrolled through the Phanerozoic against ice extent and marine extinction rates. Scrolling advances the reconstruction: each scene carries a target time, a camera and usually a province to spotlight, and the globe eases there over the first part of the scene and then holds while you read.',
-      'The camera aim for a named province comes from the reconstruction, not from the scene — provinces are found where they were when they erupted, not where their remnants sit today.',
+      'The camera aim for a named province comes from the reconstruction rather than the scene, so a province is found where it was when it erupted rather than where its remnants sit today.',
       'The scrubber and every legend control stay live throughout, and the last scene releases the controls entirely. A reader who wants to stop following the argument and go poking can do so at any point, which makes the page work both as a lecture and as a sandbox.',
     ],
     contents: [
@@ -108,7 +109,7 @@ export default [
     ],
     controls: [
       'Scroll to advance the story and the reconstruction.',
-      'Drag to rotate. Ctrl/⌘ + wheel (or pinch) to zoom — a bare wheel scrolls the story.',
+      'Drag to rotate. Ctrl/⌘ + wheel (or pinch) to zoom, since a bare wheel scrolls the story.',
       'The button top right switches globe / Robinson.',
       'Legend rows and the scrubber stay live at every point in the story.',
     ],
@@ -125,7 +126,7 @@ export default [
           'Classify every event into: LIP with extinction, LIP without, extinction without LIP.',
         ],
         discussion: [
-          'What would make one eruption lethal and another not — volume, rate, latitude, what it erupted through?',
+          'What would make one eruption lethal and another not: volume, rate, latitude, what it erupted through?',
           'The dating uncertainty on some of these is millions of years. What does that do to a claim of causation?',
         ],
       },
@@ -168,13 +169,13 @@ export default [
     repo: 'https://github.com/siwill22/StoryMaps',
     thumb: 'zircons.jpg',
     summary: [
-      'Mafic and felsic igneous zircon samples from the Puetz et al. (2026) compilation, reconstructed on a rotatable globe over the same boundaries, continents and velocity arrows as the plate-boundaries page. The series runs 0–1000 Ma at 1 Myr steps — the full span the Merdith et al. (2021) topologies support.',
-      'The display rule is the teaching point. A sample is drawn from its crystallisation age all the way to the present, bright within 5 Myr of that age and faint outside it. A zircon does not stop existing once it has formed, so the age window drives colour rather than visibility — and the page slowly accumulates a visible record of everything that has crystallised so far.',
+      'Mafic and felsic igneous zircon samples from the Puetz et al. (2026) compilation, reconstructed on a rotatable globe over the same boundaries, continents and velocity arrows as the plate-boundaries page. The series runs 0–1000 Ma at 1 Myr steps, the full span the Merdith et al. (2021) topologies support.',
+      'A sample is drawn from its crystallisation age all the way to the present, bright within 5 Myr of that age and faint outside it. A zircon does not stop existing once it has formed, so the age window drives colour rather than visibility, and the page accumulates a visible record of everything crystallised so far.',
       'Of 24,519 samples in the compilation, the 14,167 with a crystallisation age of 1000 Ma or younger appear here.',
     ],
     contents: [
       ['Igneous zircon samples', 'Mafic and felsic, coloured by rock type, from Puetz et al. (2026).'],
-      ['Bright / faint by age', 'Bright within 5 Myr of crystallisation, faint thereafter — the archive builds up as you scrub.'],
+      ['Bright / faint by age', 'Bright within 5 Myr of crystallisation, faint thereafter, so the archive builds up as you scrub.'],
       ['Plate boundaries and velocities', 'The same reconstructed boundary network as the plate-boundaries page, out to 1000 Ma.'],
       ['Zircon age histogram', 'The compilation\'s age distribution as a chart beneath the map.'],
       ['Hover and pin', 'Hover a sample for its detail, click to pin the popup.'],
@@ -227,9 +228,9 @@ export default [
     repo: 'https://github.com/siwill22/StoryMaps',
     thumb: 'detrital-zircons.jpg',
     summary: [
-      'Detrital zircon samples reconstructed to their depositional position and drawn as pie charts rather than single symbols. Wedge size is the share of that sample\'s dated grains at a given lag time — grain crystallisation age minus depositional age — and wedge colour is the lag bin.',
+      'Detrital zircon samples reconstructed to their depositional position and drawn as pie charts rather than single symbols. Wedge size is the share of that sample\'s dated grains at a given lag time (grain crystallisation age minus depositional age), and wedge colour is the lag bin.',
       'Lag time is the provenance signal. A sample full of grains barely older than the sediment was shed off an active magmatic arc nearby; a sample of grains a billion years older was shed off an old craton. One glance at a pie tells you which.',
-      'Built from ~987,000 individual U–Pb grain ages across 19,564 samples in the Puetz et al. (2026) compilation, collapsed to one pie per sample. A sample is drawn only within 5 Myr of its depositional age and then disappears — this page is about when a rock was deposited, not that it still exists.',
+      'Built from ~987,000 individual U–Pb grain ages across 19,564 samples in the Puetz et al. (2026) compilation, collapsed to one pie per sample. A sample is drawn only within 5 Myr of its depositional age and then disappears. The page is about when a rock was deposited, not that it still exists.',
       'The lag-time approach follows Jian et al. (2022), building on Cawood et al. (2012).',
     ],
     contents: [
@@ -286,9 +287,9 @@ export default [
     repo: 'https://github.com/siwill22/StoryMaps',
     thumb: 'tectonic-co2.jpg',
     summary: [
-      'Active suture length in the tropics, reconstructed under every combination of plate model, activity definition and latitude band that the source dataset enumerates — with all of them drawn at once as a bundle of curves.',
-      'The point is sensitivity, not uncertainty. "Tropical suture length" is not a measurement; it is the output of three choices. All three are enumerated in the source data, one combination got published, and this page lets you move them and watch the curve move.',
-      'There is no correlation coefficient anywhere on the page, deliberately. Correlating two heavily autocorrelated geological series inflates r and makes p meaningless, and quoting one would be exactly the flaw the page exists to expose. There is no net-flux line either — net flux without a thermostat is not a meaningful quantity.',
+      'Active suture length in the tropics, reconstructed under every combination of plate model, activity definition and latitude band that the source dataset enumerates, with all of them drawn at once as a bundle of curves.',
+      'The page shows sensitivity rather than uncertainty. "Tropical suture length" is not a measurement; it is the output of three choices. All three are enumerated in the source data, one combination got published, and this page lets you move them and watch the curve move.',
+      'There is no correlation coefficient anywhere on the page. Correlating two heavily autocorrelated geological series inflates r and makes p meaningless, and quoting one would be exactly the flaw the page exists to expose. There is no net-flux line either, because net flux without a thermostat is not a meaningful quantity.',
       'Selecting a model swaps its continents, its boundaries and its sutures together, so the model control visibly does as much as it actually does.',
     ],
     contents: [
@@ -346,79 +347,6 @@ export default [
           'Check those intervals against known cold periods.',
         ],
         discussion: ['Every link in that chain is plausible. Which one is weakest?'],
-      },
-    ],
-  },
-  {
-    slug: 'southern-ocean-gateways',
-    title: 'The gateway and the ice',
-    tagline: 'How Antarctica was cut adrift.',
-    collection: 'Story maps',
-    kind: 'Scroll-driven story',
-    url: SM + 'southern-ocean-gateways/',
-    live: false,
-    repo: 'https://github.com/siwill22/StoryMaps',
-    // No panel image: the page's globe is a WebGL context created without
-    // preserveDrawingBuffer, so a headless screenshot comes back empty, and
-    // js/story.js currently has a syntax error that stops it loading at all.
-    thumb: null,
-    summary: [
-      'A scrolling story about the breakup of Australia and Antarctica, the opening of the Tasman Gateway and Drake Passage, the onset of the Antarctic Circumpolar Current, and the glaciation of Antarctica at the Eocene–Oligocene Transition.',
-      'The globe is a fragment shader sampling a PaleoAtlas texture and cross-fading between bracketing time slices, which is what makes a full-viewport globe cheap enough to redraw on every scroll frame. Coastlines are rotated in the browser from each plate\'s Euler pole rather than pre-reconstructed — great-circle interpolation, the geometrically correct thing on a sphere.',
-      'Three scenes of a longer story, built as a prototype to test the scroll-driven globe before the rest is written.',
-    ],
-    contents: [
-      ['Australia–Antarctica breakup', 'The separation that eventually made a circumpolar ocean possible.'],
-      ['The Tasman Gateway and Drake Passage', 'The two chokepoints whose opening is the mechanism.'],
-      ['The Antarctic Circumpolar Current', 'What changes once water can go all the way round.'],
-      ['The Eocene–Oligocene Transition', 'Antarctic glaciation, against a δ¹⁸O, gateways and CO₂ chart.'],
-      ['Deep links', '#p=0.5 jumps to that fraction of the story.'],
-    ],
-    controls: [
-      'Scroll to advance the story.',
-      'The globe follows the scene; the chart tracks alongside.',
-      '#p= in the URL jumps to a point in the narrative.',
-    ],
-    lessons: [
-      {
-        title: 'Gateway or greenhouse?',
-        level: 'Undergraduate',
-        duration: '90 min seminar',
-        body: 'Antarctic glaciation at ~34 Ma has two standing explanations — thermal isolation by the circumpolar current, and declining CO₂. The page carries both on one chart.',
-        steps: [
-          'Read the δ¹⁸O record and mark the transition.',
-          'Read the gateway opening ages off the story and mark them on the same axis.',
-          'Read the CO₂ record and mark its decline.',
-          'Argue for whichever explanation the timing best supports, and state what would change your mind.',
-        ],
-        discussion: [
-          'Which of the three records has the tightest age control?',
-          'Could both mechanisms be right, and what would that predict?',
-        ],
-      },
-      {
-        title: 'A continent at the pole is not enough',
-        level: 'Senior secondary',
-        duration: '50 min',
-        body: 'Antarctica sat over the pole for tens of millions of years before it glaciated. Something else had to change.',
-        steps: [
-          'Scroll to the earliest scene and note Antarctica\'s latitude.',
-          'Note that it is already polar, and ice-free.',
-          'Scroll forward and identify what changes between then and the glaciation.',
-        ],
-        discussion: ['What keeps a polar continent warm, and what takes that away?'],
-      },
-      {
-        title: 'The strongest current on Earth',
-        level: 'Outreach',
-        duration: '10 min',
-        body: 'A short talk framing the ACC as the current that exists because nothing is in its way.',
-        steps: [
-          'Show the globe before the gateways open — water has to turn.',
-          'Show it after — water goes all the way round.',
-          'Give the transport figure and compare it with every river on Earth combined.',
-        ],
-        discussion: ['What would happen if you closed Drake Passage again?'],
       },
     ],
   },

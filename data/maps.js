@@ -1,5 +1,5 @@
-// The two Spilhaus pages -- D3 rather than WebGL, and about projection
-// rather than time. Neither is deployed yet.
+// The two Spilhaus pages: D3 rather than WebGL, and about projection rather
+// than time. Neither is deployed yet.
 
 const SM = 'https://siwill22.github.io/StoryMaps/';
 
@@ -15,7 +15,7 @@ export default [
     repo: 'https://github.com/siwill22/StoryMaps',
     thumb: 'spilhaus-agegrid.jpg',
     summary: [
-      'A seafloor age grid reprojected into the Spilhaus aspect — the oblique Adams "world in a square" projection, which cuts the Earth along continents instead of along an ocean and so shows the world ocean as one connected body.',
+      'A seafloor age grid reprojected into the Spilhaus aspect, the oblique Adams "world in a square" projection, which cuts the Earth along continents instead of along an ocean and so shows the world ocean as one connected body.',
       'On a Mercator or Robinson map, the Pacific is split down the middle and the Southern Ocean is a strip along the bottom. Here the ridges form a single continuous seam running through the whole square, which is a much better picture of what the mid-ocean ridge system actually is.',
       'The source grid is a 6 arc-minute global age grid, decimated to 0.2°, with NaN over anything that is not preserved ocean floor.',
     ],
@@ -73,13 +73,13 @@ export default [
     thumb: 'spilhaus-viewer.jpg',
     summary: [
       'The Spilhaus projection with nothing on it but a 30° graticule and the world\'s coastlines. No data layer, no time axis, no interpretation.',
-      'That emptiness is the use. Handed to a class cold, it is a puzzle: the continents are recognisable individually but the arrangement is not, and working out what has been done to the globe to produce it is a better introduction to projection than any amount of being told.',
+      'Handed to a class cold, that emptiness makes it a puzzle: the continents are recognisable one by one but the arrangement is not, and working out what has been done to the globe is a better introduction to projection than any amount of being told.',
     ],
     contents: [
       ['Graticule', 'Latitude and longitude at 30° intervals, so the distortion can be seen directly.'],
       ['Coastlines', 'The continents, sliced and rearranged around the edge of the square.'],
     ],
-    controls: ['Static map — open it and look.'],
+    controls: ['Static map: open it and look.'],
     lessons: [
       {
         title: 'What has been done to this globe?',

@@ -1,6 +1,6 @@
-/* elstir -- one stylesheet for the index and every viewer page.
+/* elstir: one stylesheet for the index and every viewer page.
  *
- * Dark by design: all eighteen panel images are screenshots of dark viewers,
+ * Dark by design: every panel image is a screenshot of a dark viewer,
  * and a light page would frame them in a way none of them were built for.
  * Nothing is loaded from a CDN, so the site works offline and on a projector
  * with no network.
@@ -200,7 +200,7 @@ main { padding: 40px 0 72px; }
 
 .panel:hover .shot img { opacity: 0.92; }
 
-/* Stand-in for the one page whose globe cannot currently be screenshotted. */
+/* Stand-in for a record with `thumb: null`, i.e. no still captured yet. */
 .shot.placeholder {
   display: flex;
   align-items: center;
