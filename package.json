@@ -1,0 +1,12 @@
+{
+  "name": "elstir",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A gallery of Earth-science viewers, with lesson plan ideas for each.",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "serve": "node build.mjs && npx --yes http-server . -p 8080 -c-1 -o"
+  },
+  "license": "MIT"
+}
