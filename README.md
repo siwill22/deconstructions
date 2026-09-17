@@ -5,6 +5,7 @@
 ```
 data/           the catalog: one record per viewer, all the prose lives here
   geode.js        the five Geode globe viewers
+  geodeviewers.js the standalone GeodeViewers pages
   storymaps.js    the six StoryMaps pages
   surveys.js      the marine survey globe and HistMag
   maps.js         the Spilhaus seafloor age map
