@@ -27,9 +27,9 @@ export const partners = [
   { name: 'GPlates', url: 'https://www.gplates.org', logo: 'gplates.png' },
   { name: 'AuScope', url: 'https://www.auscope.org.au', logo: 'auscope.png' },
   { name: 'EarthByte', url: 'https://www.earthbyte.org', logo: 'earthbyte.png' },
+  { name: 'University of Sydney', url: 'https://www.sydney.edu.au', logo: 'usyd.svg' },
   { name: 'University of Tasmania', url: 'https://www.utas.edu.au', logo: 'utas.svg' },
   { name: 'Institute for Marine and Antarctic Studies', url: 'https://www.imas.utas.edu.au', logo: 'imas.png' },
-  { name: 'University of Sydney', url: 'https://www.sydney.edu.au', logo: 'usyd.svg' },
 ];
 
 export const site = {
