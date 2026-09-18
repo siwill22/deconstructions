@@ -46,38 +46,4 @@ saying where it will live. Flip the flag when the viewer's own repo deploys.
 A record with `repo: null` gets a different note again, for a page that exists
 only as a local file; `status` adds a second badge, such as "work in progress".
 
-## Footer logos
-
-The partner row is `partners` in `data/index.js`. Files live in
-`assets/logos/`; a record with `logo: null` falls back to its name set in
-type, so a missing file shows as a gap to fill rather than a broken image.
-
-Provenance, since none of these came from a media kit and all of them should
-be replaced if a brand-approved version is to hand:
-
-| logo | source | edited? |
-|---|---|---|
-| GPlates, AuScope | gplates.org | no |
-| EarthByte | earthbyte.org | cropped to the ink |
-| Sydney | sydney.edu.au, dark variant | no |
-| UTAS | the en.wikipedia article | recoloured, see below |
-| IMAS | the UTAS/IMAS lockup on aappartnership.org.au | UTAS endorsement line cropped off, since UTAS has its own chip in the row |
-
-The UTAS file is the reversed variant, white ink drawn for a dark background,
-and it came with a `viewBox` but no `width`/`height`, which collapses an
-`<img>` to zero width. Both were fixed in the file: white swapped for near
-black, intrinsic dimensions added.
-
-Every logo sits on a light chip. Institutional logos are drawn for white
-paper, and a mix of dark-ink-on-transparency, white-plate and reversed files
-cannot go onto a dark page without half of them disappearing.
-
-## Panel images
-
-Most come from the `shots-*` directories in the Geode repo, converted to JPEG
-at 1100 px. The ones with no existing still were captured with Playwright
-against the live or locally served page. A page whose globe creates its WebGL
-context without `preserveDrawingBuffer` cannot be captured that way at all: the
-screenshot comes back as an empty canvas, and the record needs `thumb: null`
-until someone grabs a still by hand.
 
