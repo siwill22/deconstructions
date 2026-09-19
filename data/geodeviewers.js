@@ -1,6 +1,7 @@
 // Viewers from the GeodeViewers repo: standalone, independently buildable
-// pages on Geode's engine, each deployed under one Pages site rather than
-// living in the Geode monorepo.
+// pages, each deployed under one Pages site rather than living in the Geode
+// monorepo. TropicalSutures arrived here from StoryMaps, which deleted its
+// copy as superseded.
 
 const GV = 'https://siwill22.github.io/GeodeViewers/';
 
@@ -19,6 +20,7 @@ export default [
       'A plate reconstruction is not a list of positions. It is a hierarchy of relative rotations: every plate is positioned relative to another plate, which is positioned relative to another, up to an anchor. An ordinary reconstruction map hides this completely. You cannot tell by looking at two continents that one is being placed through the other, or that its position is the product of thirty-seven composed rotations.',
       'This viewer draws the hierarchy on the globe and runs it through time, using Cao et al. (2024) from 0 to 1800 Ma, anchored at plate 0. Each plate gets a node; each hop of the hierarchy gets a link. Click a plate and it traces the full circuit back to the anchor.',
       'Most links carry no relative motion at all. At 0 Ma, 426 of 496 are locked, meaning the two plates they join move as one mass and the link is pure bookkeeping. Drawing that distinction is what turns the tree from a tangle into a reading of the model.',
+      'A second view opens beneath the globe: an alluvial diagram of those locked groups merging and splitting across the whole 1800 Myr in one picture, 173 reorganisation events in all. Band and ribbon size is spherical area of continental crust, not plate count, so a supercontinent and a one-plate sliver do not weigh the same and a group made only of oceanic fragments stays out of it.',
     ],
     contents: [
       ['Nodes', 'One per plate carrying geometry at the current age, placed at the boundary centroid of that plate\'s largest polygon.'],
@@ -29,13 +31,16 @@ export default [
       ['Static polygons or topologies', 'Two different statements about the same model: the tree from rigid static polygons (497 plates at 0 Ma, 70 moving links and 426 locked) or from resolved topologies (46 plates, 37 moving and 7 locked).'],
       ['The plate mosaic', 'Every static polygon, oceanic as well as continental, with coastlines drawn over it. Toggleable.'],
       ['Centre longitude', 'Slides the central meridian on a flat map, so the Pacific can sit in the middle instead of split down the antimeridian.'],
+      ['Supercontinent flows', 'An alluvial diagram of the locked groups through all 1800 Myr: 173 reorganisation events, groups holding 1%+ of the continental crust modelled at that age given their own band and the rest pooled in grey.'],
+      ['Lineage colour', 'A band inherits the colour of whichever earlier band gave it the most area, so a colour reads as one mass of crust rather than a group id. The globe\'s nodes take the same colours while the panel is open, so the two views agree.'],
       ['Projections', 'Globe, Robinson and Plate Carrée.'],
     ],
     controls: [
       'Drag to rotate the globe, or drag a flat map to scroll longitude.',
       'The age slider runs 0 to 1800 Ma; the tree is sampled every 5 Myr.',
       'Click a plate to trace its circuit to the anchor.',
-      'Toggle locked links, group colouring, plate id labels and coastlines from the panel.',
+      'Toggle locked links, group colouring, plate id labels, coastlines and plate boundaries from the panel.',
+      'Toggle supercontinent flows to open the alluvial diagram; hover a band for its plate ids, its share of Earth\'s surface and the ages it spans.',
       'Switch "built from" between static polygons and topologies.',
     ],
     lessons: [
@@ -72,19 +77,19 @@ export default [
         ],
       },
       {
-        title: 'Supercontinents, counted without looking at a map',
+        title: 'Read the supercontinent cycle off one diagram',
         level: 'Senior secondary',
         duration: '50 min',
-        body: 'The number of locked groups is how many independently moving masses the model contains. It falls as continents assemble, and the fall is visible without inspecting any geography.',
+        body: 'The flows panel shows 1800 Myr of continental crust merging and splitting in a single picture. Students find the assemblies in it before being told where they are.',
         steps: [
-          'Turn on group colouring and record the locked group count at 0, 100, 250, 500 and 1000 Ma.',
-          'Plot count against age.',
-          'Mark the known supercontinent assemblies on the same axis.',
-          'Check the map at the lowest count and describe what the world looks like there.',
+          'Open supercontinent flows and find the ages where many bands merge into few.',
+          'Find the ages where one wide band breaks into several.',
+          'Name each event against Rodinia, Gondwana and Pangaea, and check the ages.',
+          'Hover the widest band at 300 Ma and read which plate ids it contains.',
         ],
         discussion: [
-          'Does a falling group count prove continents were joined, or only that the model moves them together?',
-          'What would a model with one group everywhere be saying?',
+          'Does a merge in this diagram prove continents were joined, or only that the model moves them together?',
+          'Bands are weighted by continental area. What would the diagram look like weighted by plate count instead?',
         ],
       },
       {
@@ -98,6 +103,91 @@ export default [
           'Run the age slider and let the whole structure reorganise.',
         ],
         discussion: ['If everything moves relative to something else, what is anything measured against?'],
+      },
+    ],
+  },
+  {
+    slug: 'tropical-sutures',
+    title: 'Tropical suture length',
+    tagline: 'Every version of the same curve, drawn at once.',
+    collection: 'Globe viewers',
+    kind: 'Interactive map',
+    url: GV + 'TropicalSutures/',
+    live: true,
+    repo: 'https://github.com/siwill22/GeodeViewers',
+    thumb: 'tropical-sutures.jpg',
+    status: 'Prototype.',
+    summary: [
+      'Active suture length in the tropics from 800 Ma to the present, reconstructed under every combination of plate model, activity definition, latitude band and band edge the source dataset enumerates, with all of them drawn at once. The bright line is the combination currently set; every faint line behind it is a different setting somebody could defend.',
+      'The point is sensitivity, not uncertainty. Tropical suture length is not a measurement. It is the output of four choices, the source tabulates all of them, one combination got published, and this page lets you move them and watch the curve move.',
+      'There is no correlation coefficient anywhere, deliberately. Correlating two heavily autocorrelated geological series inflates r and makes p meaningless, and quoting one would be the exact flaw the page exists to expose. There is no net-flux line either, because net flux without a thermostat is not a meaningful quantity.',
+      'A panel headed "what the reconstruction lost" reports, per model, how many sutures were dropped and how many were clamped to their plate\'s defined age range, with the percentage of the compilation length that survived. The page is scoped to this one mechanism permanently; the other drivers are planned as separate sibling pages.',
+    ],
+    contents: [
+      ['Three plate models', 'Merdith et al. (2021), Torsvik & Cocks (2017) CEED, and CEED with Swanson-Hysell, Macdonald and Domeier. Each reconstructs on the anchor plate it is meant to be used with.'],
+      ['The same model twice', 'Two of the three are the same named CEED model from two different rotation files, one as gprm distributes it and one as the source\'s own repository ships it. They put Laurentia 13° apart in latitude at 445 Ma.'],
+      ['Four activity definitions', 'Exhumation max to present (cumulative), exhumation interval (the published choice), magmatic interval and metamorphic interval. Only one is drawn at a time, because the cumulative one peaks around seven times higher and drawing them together would flatten the rest.'],
+      ['Four latitude bands', '±10°, ±15° (published), ±20° and ±40°, as tabulated by the source.'],
+      ['Band edge', 'A hard edge, which is what every published version uses, or a cosine taper, which is this page\'s own and is labelled as such.'],
+      ['The published curve', 'Macdonald et al. (2019) within-15° suture length, drawn as the reference.'],
+      ['Glacial extent', 'A measured band beneath the curves, with the Sturtian, Marinoan and Gaskiers glaciations named.'],
+      ['Latitude histogram', 'Suture length by latitude at the current age, beside the map.'],
+      ['What the reconstruction lost', 'Sutures dropped and clamped per model, with the fraction of compilation length that reconstructs.'],
+    ],
+    controls: [
+      'Drag to pan, scroll to zoom. Globe / Map switches projection.',
+      'Scrub the slider or press ▶. The axis runs 800 Ma to 0 Ma.',
+      'Click a control value to highlight it. Plate model, band and band edge keep drawing every value; activity definition draws only the one clicked.',
+      'Hover a line in the chart to name its combination, click to snap the controls to it.',
+      '#lon,lat,zoom,time in the URL pins the view.',
+    ],
+    lessons: [
+      {
+        title: 'How many curves fit under one published figure?',
+        level: 'Undergraduate',
+        duration: '90 min seminar',
+        body: 'A methods lesson disguised as a tectonics lesson. Students find the published combination, then open each choice in turn and watch the envelope grow.',
+        steps: [
+          'Set the controls to the published combination: exhumation interval, ±15°, hard edge.',
+          'Describe the curve in words, then let the plate model vary and describe how far it moves.',
+          'Open the latitude band, then the band edge, noting the spread each one adds.',
+          'Identify which single choice the result is most sensitive to.',
+        ],
+        discussion: [
+          'If a published figure shows one of these curves, what is the honest way to present the rest?',
+          'Is the spread across choices an uncertainty? What would you have to add to make it one?',
+        ],
+      },
+      {
+        title: 'The same model, two files, 13 degrees apart',
+        level: 'Undergraduate',
+        duration: '60 min practical',
+        body: 'Two of the three plate models carry the same name. They come from different rotation files and they disagree about where Laurentia was, which is a reproducibility problem rather than a scientific one.',
+        steps: [
+          'Set the age to 445 Ma and switch between the two CEED entries, watching Laurentia.',
+          'Measure the latitude difference and check it against the 13° the page states.',
+          'Read "what the reconstruction lost" for each and compare the dropped and clamped counts.',
+          'Decide which file you would cite, and what you would have to write down to make the choice reproducible.',
+        ],
+        discussion: [
+          'Does citing a model by name identify what you actually ran?',
+          'What would a paper need to report for someone else to reproduce this curve exactly?',
+        ],
+      },
+      {
+        title: 'Mountains, weathering and the thermostat',
+        level: 'Senior secondary',
+        duration: '50 min',
+        body: 'Why anyone would care about suture length in the tropics in the first place.',
+        steps: [
+          'Establish the chain: collision makes mountains, mountains in the wet tropics weather fast, weathering consumes CO₂.',
+          'Use the map to find intervals when a lot of suture sat inside the tropical band.',
+          'Check those intervals against the glaciations marked on the chart.',
+        ],
+        discussion: [
+          'Every link in that chain is plausible. Which one is weakest?',
+          'The glacial band is measured and the curves are computed. Why does the page draw them differently?',
+        ],
       },
     ],
   },

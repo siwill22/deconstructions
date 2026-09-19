@@ -6,7 +6,7 @@
 data/           the catalog: one record per viewer, all the prose lives here
   geode.js        the five Geode globe viewers
   geodeviewers.js the standalone GeodeViewers pages
-  storymaps.js    the six StoryMaps pages
+  storymaps.js    the five StoryMaps pages
   surveys.js      the marine survey globe and HistMag
   maps.js         the Spilhaus seafloor age map
   index.js        concatenates them, plus site-level copy and the logo row
@@ -39,6 +39,10 @@ A record needs `slug`, `title`, `tagline`, `collection`, `kind`, `url`, `live`,
 `repo`, `thumb`, `summary`, `contents`, `controls` and `lessons`. The build
 throws on a duplicate slug, an unknown collection or an unknown lesson level
 rather than quietly producing a page nobody can reach.
+
+Live flags go stale as the viewers' own repos deploy. `node build.mjs` does not
+check them; a periodic pass over each `url` is what catches a viewer that has
+gone live, or one that has moved.
 
 `live: false` marks a viewer that is built but not yet published: the panel
 gets a "not yet deployed" badge and the launch button is replaced with a note

@@ -1,10 +1,12 @@
 // The StoryMaps pages: https://github.com/siwill22/StoryMaps
 //
-// Four of these (plate-boundaries, zircons, detrital-zircons, tectonic-co2)
-// are one family sharing a globe, a clock and a legend; lips and
-// southeast-tasmania are scroll-driven narratives. None are deployed yet, so
-// each record carries `live: false`, which puts the "not yet deployed" badge
-// on its card.
+// Three of these (plate-boundaries, zircons, detrital-zircons) are one family
+// sharing a globe, a clock and a legend; lips and southeast-tasmania are
+// scroll-driven narratives.
+//
+// Only southeast-tasmania is on StoryMaps' `main`, which is what its Pages
+// site serves. The rest live on a working branch and so return 404, which is
+// what `live: false` records.
 
 const SM = 'https://siwill22.github.io/StoryMaps/';
 
@@ -277,87 +279,13 @@ export default [
     ],
   },
   {
-    slug: 'tectonic-co2',
-    title: 'Tectonic drivers of atmospheric CO₂',
-    tagline: 'Every version of the same curve, drawn at once.',
-    collection: 'Story maps',
-    kind: 'Interactive map',
-    url: SM + 'tectonic-co2/',
-    live: false,
-    repo: 'https://github.com/siwill22/StoryMaps',
-    thumb: 'tectonic-co2.jpg',
-    summary: [
-      'Active suture length in the tropics, reconstructed under every combination of plate model, activity definition and latitude band that the source dataset enumerates, with all of them drawn at once as a bundle of curves.',
-      'The page shows sensitivity rather than uncertainty. "Tropical suture length" is not a measurement; it is the output of three choices. All three are enumerated in the source data, one combination got published, and this page lets you move them and watch the curve move.',
-      'There is no correlation coefficient anywhere on the page. Correlating two heavily autocorrelated geological series inflates r and makes p meaningless, and quoting one would be exactly the flaw the page exists to expose. There is no net-flux line either, because net flux without a thermostat is not a meaningful quantity.',
-      'Selecting a model swaps its continents, its boundaries and its sutures together, so the model control visibly does as much as it actually does.',
-    ],
-    contents: [
-      ['The knob → belt → bundle loop', 'Set a choice, see the belt it implies on the map, see the curve it implies in the chart.'],
-      ['Three enumerated choices', 'Plate model, which tabulated age interval counts as "active", and how wide "tropical" is.'],
-      ['Vary across the bundle', 'Tick a control to let it spread, and every value it can take is drawn together.'],
-      ['Hover to identify', 'Hover a line in the chart to name its combination, click to snap the controls to it.'],
-      ['Whole-map model swap', 'Continents, boundaries and sutures move together when the model changes.'],
-    ],
-    controls: [
-      'Drag to pan, scroll to zoom.',
-      'Scrub the slider or press ▶.',
-      'Click a control to set it; tick "vary across the bundle" to let it spread.',
-      'Globe / Map switches projection. #lon,lat,zoom,time pins the view.',
-    ],
-    lessons: [
-      {
-        title: 'How many curves fit under one published figure?',
-        level: 'Undergraduate',
-        duration: '90 min seminar',
-        body: 'A methods lesson disguised as a tectonics lesson. Students find the published combination, then open up each choice in turn and watch the envelope grow.',
-        steps: [
-          'Set the three controls to one specific combination and describe the curve in words.',
-          'Let the plate model vary and describe how much the curve moves.',
-          'Let the activity definition vary, then the latitude band.',
-          'Identify which single choice the result is most sensitive to.',
-        ],
-        discussion: [
-          'If a published figure shows one of these curves, what is the honest way to present the rest?',
-          'Is the spread across choices an uncertainty? What would you have to add to make it one?',
-        ],
-      },
-      {
-        title: 'Why there is no correlation coefficient on this page',
-        level: 'Undergraduate',
-        duration: '60 min tutorial',
-        body: 'The absence is the lesson. Work through why an r value between two smooth geological time series is close to meaningless.',
-        steps: [
-          'Generate two independent random walks and correlate them; note how high r routinely gets.',
-          'Explain the result in terms of autocorrelation and effective sample size.',
-          'Return to the page and ask what statistic, if any, would be defensible here.',
-        ],
-        discussion: [
-          'How many effectively independent data points does a 500 Myr curve sampled every 1 Myr actually contain?',
-        ],
-      },
-      {
-        title: 'Mountains, weathering and the thermostat',
-        level: 'Senior secondary',
-        duration: '50 min',
-        body: 'Why anyone would care about suture length in the tropics in the first place.',
-        steps: [
-          'Establish the chain: collision makes mountains, mountains in the wet tropics weather fast, weathering consumes CO₂.',
-          'Use the map to find intervals when a lot of suture sat in the tropical band.',
-          'Check those intervals against known cold periods.',
-        ],
-        discussion: ['Every link in that chain is plausible. Which one is weakest?'],
-      },
-    ],
-  },
-  {
     slug: 'southeast-tasmania',
     title: 'Southeast Tasmania',
     tagline: 'Gondwana to dolerite, at Port Arthur and Eaglehawk Neck.',
     collection: 'Story maps',
     kind: 'Scroll-driven story',
     url: SM + 'southeast-tasmania/',
-    live: false,
+    live: true,
     repo: 'https://github.com/siwill22/StoryMaps',
     thumb: 'southeast-tasmania.jpg',
     summary: [
