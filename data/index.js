@@ -41,7 +41,7 @@ export const site = {
     'Every viewer here has its own page: what is actually in it, how to drive it, and a handful of lesson plan ideas pitched at senior secondary, undergraduate or general audiences. Pick a panel to start.',
   ],
   footer: [
-    'The viewers live in the <a href="https://github.com/siwill22/Geode">Geode</a>, <a href="https://github.com/siwill22/GeodeViewers">GeodeViewers</a>, <a href="https://github.com/siwill22/StoryMaps">StoryMaps</a> and <a href="https://github.com/siwill22/marine-survey-globe">marine-survey-globe</a> repositories; this site is the shelf they sit on.',
+    'The viewers live in the <a href="https://github.com/siwill22/Geode">Geode</a> monorepo, one <a href="https://github.com/siwill22?tab=repositories&q=Geode-">Geode-&lt;viewer&gt;</a> repo per standalone viewer, the <a href="https://github.com/siwill22/StoryMaps">StoryMaps</a> family and <a href="https://github.com/siwill22/marine-survey-globe">marine-survey-globe</a>; this site is the shelf they sit on.',
     'Lesson plan ideas are starting points, not vetted curriculum material. Take what is useful and rewrite the rest.',
   ],
 };
