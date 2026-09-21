@@ -1,79 +1,61 @@
 // The Spilhaus page: D3 rather than WebGL, and about projection rather than
 // time. Not deployed yet.
 
-const SM = 'https://siwill22.github.io/StoryMaps/';
-
 export default [
   {
     slug: 'spilhaus-agegrid',
-    title: 'Seafloor age in the Spilhaus projection',
-    tagline: 'The ocean as one body of water, coloured by how old its floor is.',
+    title: 'Seafloor age, Spilhaus',
+    tagline: 'The ocean as one body of water, coloured by the age of its floor.',
     collection: 'Map projections',
     kind: 'Interactive map',
-    url: SM + 'spilhaus-agegrid/',
+    url: 'https://siwill22.github.io/StoryMaps/spilhaus-agegrid/',
     live: false,
     repo: 'https://github.com/siwill22/StoryMaps',
     thumb: 'spilhaus-agegrid.jpg',
     summary: [
-      'A seafloor age grid reprojected into the Spilhaus aspect, the oblique Adams "world in a square" projection, which cuts the Earth along continents instead of along an ocean and so shows the world ocean as one connected body.',
-      'On a Mercator or Robinson map, the Pacific is split down the middle and the Southern Ocean is a strip along the bottom. Here the ridges form a single continuous seam running through the whole square, which is a much better picture of what the mid-ocean ridge system actually is.',
-      'The source grid is a 6 arc-minute global age grid, decimated to 0.2°, with NaN over anything that is not preserved ocean floor.',
+      'A seafloor age grid in the Spilhaus aspect, the oblique Adams square that cuts the Earth along continents instead of along an ocean. On a Mercator the Pacific is split and the Southern Ocean is a strip at the bottom. Here the ridges form one continuous seam.',
     ],
     contents: [
-      ['Seafloor age', 'Ages from ~0 to ~339 Ma, with no data where the floor has been subducted or never existed.'],
-      ['The Spilhaus aspect', 'An equal-area square centred so the ocean is continuous.'],
-      ['Graticule and coastlines', 'Drawn over the reprojected grid so the distortion is legible.'],
+      ['Age', '0 to ~339 Ma, blank where the floor is gone or never existed.'],
+      ['The aspect', 'An equal-area square centred so the ocean is continuous.'],
+      ['Overlay', 'Graticule and coastlines, so the distortion is legible.'],
     ],
-    controls: [
-      'The first render takes a few seconds while the inverse-projection lookup table is built; progress shows under the map.',
-    ],
+    controls: ['First render takes a few seconds while the inverse-projection table builds.'],
     lessons: [
       {
         title: 'Find the ridge system in one piece',
         level: 'Senior secondary',
         duration: '50 min',
-        body: 'The same map on two projections, and a question about what the projection is doing to the argument.',
         steps: [
-          'Show a conventional world map of seafloor age and ask students to trace the ridge system with a finger.',
-          'Show the Spilhaus version and ask them to do it again.',
-          'Ask which one made it easier and why.',
+          'Show a conventional world map of seafloor age. Trace the ridge system with a finger.',
+          'Show the Spilhaus version. Trace it again.',
+          'Ask which was easier, and why.',
         ],
-        discussion: [
-          'Every flat map distorts something. What does this one distort, and what does it protect?',
-          'Who decided that the Atlantic goes in the middle?',
-        ],
+        ask: 'Every flat map distorts something. What does this one protect?',
       },
       {
-        title: 'Age, symmetry and spreading rate',
+        title: 'Age, symmetry, spreading rate',
         level: 'Undergraduate',
-        duration: '60 min practical',
-        body: 'Symmetric age stripes about a ridge are the original evidence for seafloor spreading. Their width is the spreading rate.',
+        duration: '60 min',
         steps: [
-          'Pick a point on the Mid-Atlantic Ridge and measure the distance to the 40 Ma contour on each side.',
+          'On the Mid-Atlantic Ridge, measure the distance to the 40 Ma contour each side.',
           'Convert to a half-spreading rate.',
-          'Repeat on the East Pacific Rise and compare.',
-          'Find somewhere the pattern is not symmetric and suggest why.',
+          'Repeat on the East Pacific Rise.',
+          'Find somewhere the pattern is not symmetric and say why.',
         ],
-        discussion: [
-          'Why is the oldest ocean floor only ~200 Ma when continents are billions of years old?',
-          'What does the area of no-data tell you about how much ocean floor has been destroyed?',
-        ],
+        ask: 'Why is the oldest ocean floor ~200 Ma when continents are billions of years old?',
       },
       {
         title: 'What has been done to this globe?',
         level: 'Senior secondary',
-        duration: '30 min starter',
-        body: 'Show the map with no explanation and let the class reverse-engineer the projection before you name it.',
+        duration: '30 min',
         steps: [
-          'Project the map and ask students to name as many continents as they can.',
-          'Ask where the poles are, and have them find both on the graticule.',
-          'Ask what has been cut and what has been kept whole.',
-          'Only then name the projection and say who made it and why.',
+          'Show the map with no explanation. Name as many continents as you can.',
+          'Find both poles on the graticule.',
+          'Say what has been cut and what has been kept whole.',
+          'Only then name the projection.',
         ],
-        discussion: [
-          'Whose map is a normal world map, and what does its centre say about who drew it?',
-          'If you were a fish, which projection would you want?',
-        ],
+        ask: 'Whose map is a normal world map, and what does its centre say about who drew it?',
       },
     ],
   },

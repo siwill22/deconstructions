@@ -1,4 +1,7 @@
-# elstir
+# GPlates Deconstructions
+
+The repo is still called `elstir`, so the site sits at
+<https://siwill22.github.io/elstir/>. Renaming it would break that URL.
 
 ## Structure
 

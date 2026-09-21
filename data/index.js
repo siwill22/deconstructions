@@ -34,14 +34,14 @@ export const partners = [
 ];
 
 export const site = {
-  title: 'GPlates Knowledge Hub',
-  strap: 'Earth-science viewers, and what to teach with them.',
+  title: 'GPlates Deconstructions',
+  strap: 'Viewers that take a reconstruction apart, and sketches for teaching with them.',
   intro: [
-    'Fifteen interactive viewers of the Earth through deep time: mantle structure, plate reconstructions, paleoclimate, fossils, zircons, flood basalts, the ocean floor, and four centuries of magnetic survey. Each one runs in a browser with nothing to install.',
-    'Every viewer here has its own page: what is actually in it, how to drive it, and a handful of lesson plan ideas pitched at senior secondary, undergraduate or general audiences. Pick a panel to start.',
+    'Fifteen viewers of the Earth through deep time. Each runs in a browser with nothing to install.',
+    'Every one has a page here: what is in it, how to drive it, and a few lesson sketches. Prototype, throughout.',
   ],
   footer: [
-    'The viewers live in the <a href="https://github.com/siwill22/Geode">Geode</a> monorepo, one <a href="https://github.com/siwill22?tab=repositories&q=Geode-">Geode-&lt;viewer&gt;</a> repo per standalone viewer, the <a href="https://github.com/siwill22/StoryMaps">StoryMaps</a> family and <a href="https://github.com/siwill22/marine-survey-globe">marine-survey-globe</a>; this site is the shelf they sit on.',
-    'Lesson plan ideas are starting points, not vetted curriculum material. Take what is useful and rewrite the rest.',
+    'Viewers live in <a href="https://github.com/siwill22/Geode">Geode</a>, <a href="https://github.com/siwill22/GeodeViewers">GeodeViewers</a>, <a href="https://github.com/siwill22/StoryMaps">StoryMaps</a> and <a href="https://github.com/siwill22/marine-survey-globe">marine-survey-globe</a>. This is the shelf.',
+    'Lesson sketches are starting points, not vetted curriculum. Take what is useful.',
   ],
 };

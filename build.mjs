@@ -75,11 +75,11 @@ function partnerRow(up) {
 function panel(v) {
   const shot = v.thumb
     ? `<div class="shot"><img src="assets/thumbs/${esc(v.thumb)}" alt="${esc(v.title)}" loading="lazy" width="1100" height="688"></div>`
-    : `<div class="shot placeholder">preview to come</div>`;
+    : `<div class="shot placeholder">no preview</div>`;
   const badges = [
     `<span class="badge">${esc(v.kind)}</span>`,
     ...levelsOf(v).map((l) => `<span class="badge level">${esc(l)}</span>`),
-    v.live ? '' : '<span class="badge pending">not yet deployed</span>',
+    v.live ? '' : '<span class="badge pending">not deployed</span>',
     v.status ? `<span class="badge pending">${esc(v.status.replace(/\.$/, '').toLowerCase())}</span>` : '',
   ].filter(Boolean);
   return `<a class="panel" href="viewers/${esc(v.slug)}.html" data-levels="${esc(levelsOf(v).join('|'))}">
@@ -150,7 +150,7 @@ ${chipRow('Level', 'level', levels)}
 <div class="grid">
 ${viewers.map(panel).join('\n')}
 </div>
-<p class="empty">No viewer carries a lesson idea at that level yet.</p>
+<p class="empty">Nothing at that level yet.</p>
 </div></main>`;
 
   return page({
@@ -165,22 +165,14 @@ ${viewers.map(panel).join('\n')}
 /* ---- a viewer page ------------------------------------------------------ */
 
 function lesson(l) {
-  const discussion = l.discussion?.length
-    ? `<div class="discussion"><span class="label">Discussion</span><ul>
-      ${l.discussion.map((d) => `<li>${esc(d)}</li>`).join('\n      ')}
-    </ul></div>`
-    : '';
+  const ask = l.ask ? `<p class="discussion">${esc(l.ask)}</p>` : '';
   return `<div class="lesson">
-    <div class="meta">
-      <span class="badge level">${esc(l.level)}</span>
-      <span class="badge">${esc(l.duration)}</span>
-    </div>
+    <p class="meta">${esc(l.level)} &middot; ${esc(l.duration)}</p>
     <h3>${esc(l.title)}</h3>
-    <p class="body">${esc(l.body)}</p>
     <ol class="steps">
       ${l.steps.map((s) => `<li>${esc(s)}</li>`).join('\n      ')}
     </ol>
-    ${discussion}
+    ${ask}
   </div>`;
 }
 
@@ -189,22 +181,21 @@ function viewerPage(v) {
   // built on someone's laptop with no repository behind it yet.
   let launch;
   if (v.live) {
-    launch = `<a class="launch" href="${esc(v.url)}">Launch the viewer →</a>`;
+    launch = `<a class="launch" href="${esc(v.url)}">Launch</a>`;
   } else if (v.repo) {
-    launch = `<span class="launch disabled" aria-disabled="true">Not yet deployed</span>
-     <p class="launch-note">Built but not yet published. It runs locally from
-     <a href="${esc(v.repo)}">the repository</a>${
-       v.url ? `; the launch link will point at <code>${esc(v.url)}</code> once it is deployed` : ''
+    launch = `<span class="launch disabled" aria-disabled="true">Not deployed</span>
+     <p class="launch-note">Runs locally from <a href="${esc(v.repo)}">the repository</a>${
+       v.url ? `. It will live at <code>${esc(v.url)}</code>` : ''
      }.</p>`;
   } else {
-    launch = `<span class="launch disabled" aria-disabled="true">Not yet deployed</span>
-     <p class="launch-note">A working local page with no repository behind it yet, so there is
-     nothing to link to. ${esc(v.status ?? '')}</p>`;
+    launch = `<span class="launch disabled" aria-disabled="true">Not deployed</span>
+     <p class="launch-note">A local page with no repository yet, so there is nothing to link
+     to. ${esc(v.status ?? '')}</p>`;
   }
 
   const shot = v.thumb
     ? `<img src="../assets/thumbs/${esc(v.thumb)}" alt="${esc(v.title)}">`
-    : `<div class="shot placeholder">preview to come</div>`;
+    : `<div class="shot placeholder">no preview</div>`;
 
   const body = `<header class="masthead compact"><div class="wrap">
   <p class="wordmark"><a href="../index.html">${esc(site.title)}</a></p>
@@ -222,34 +213,44 @@ function viewerPage(v) {
 
 <main><div class="wrap">
   <article>
-    <h2>What it is</h2>
-    <div class="prose">
-      ${v.summary.map((p) => `<p>${esc(p)}</p>`).join('\n      ')}
-    </div>
+    <section>
+      <h2>What it is</h2>
+      <div class="prose">
+        ${v.summary.map((p) => `<p>${esc(p)}</p>`).join('\n        ')}
+      </div>
+    </section>
 
-    <h2>What is in it</h2>
-    <ul class="contents">
-      ${v.contents
-        .map(([term, def]) => `<li><span class="term">${esc(term)}</span><span class="def">${esc(def)}</span></li>`)
-        .join('\n      ')}
-    </ul>
+    <section>
+      <h2>Contents</h2>
+      <ul class="contents">
+        ${v.contents
+          .map(([term, def]) => `<li><span class="term">${esc(term)}</span><span class="def">${esc(def)}</span></li>`)
+          .join('\n        ')}
+      </ul>
+    </section>
 
-    <h2>Driving it</h2>
-    <ul class="controls">
-      ${v.controls.map((c) => `<li>${esc(c)}</li>`).join('\n      ')}
-    </ul>
+    <section>
+      <h2>Controls</h2>
+      <ul class="controls">
+        ${v.controls.map((c) => `<li>${esc(c)}</li>`).join('\n        ')}
+      </ul>
+    </section>
 
-    <h2>Lesson plan ideas</h2>
-    <div class="lessons">
-      ${v.lessons.map(lesson).join('\n      ')}
-    </div>
+    <section>
+      <h2>Lesson sketches</h2>
+      <div class="lessons">
+        ${v.lessons.map(lesson).join('\n        ')}
+      </div>
+    </section>
 
-    <h2>Source</h2>
-    <div class="prose"><p>${
-      v.repo
-        ? `Built from <a href="${esc(v.repo)}">${esc(v.repo.replace('https://github.com/', ''))}</a>.`
-        : 'No public repository yet.'
-    }</p></div>
+    <section>
+      <h2>Source</h2>
+      <div class="prose"><p>${
+        v.repo
+          ? `<a href="${esc(v.repo)}">${esc(v.repo.replace('https://github.com/', ''))}</a>`
+          : 'No public repository yet.'
+      }</p></div>
+    </section>
   </article>
 </div></main>`;
 

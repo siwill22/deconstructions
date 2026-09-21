@@ -1,456 +1,262 @@
-/* elstir: one stylesheet for the index and every viewer page.
+/* GPlates Deconstructions.
  *
- * Dark by design: every panel image is a screenshot of a dark viewer,
- * and a light page would frame them in a way none of them were built for.
- * Nothing is loaded from a CDN, so the site works offline and on a projector
- * with no network.
+ * White paper, dark blue ink, hairline rules, no fills. The viewers it
+ * indexes are all dark and saturated, so the page around them stays out of
+ * the way: the only colour on it comes from the screenshots.
  */
 
 :root {
-  --bg: #0b0d10;
-  --bg-raised: #14181d;
-  --bg-raised-2: #1b2026;
-  --line: #262c34;
-  --line-bright: #39414b;
-  --text: #dde3ea;
-  --text-dim: #9aa6b2;
-  --text-faint: #6d7883;
-  --accent: #e8a24a;
-  --accent-dim: #8a6330;
-  --link: #7fb4e0;
-  --radius: 10px;
-  --maxw: 1240px;
-  color-scheme: dark;
+  --bg: #ffffff;
+  --ink: #16243c;
+  --ink-mid: #5a6b85;
+  --ink-faint: #8b97a8;
+  --rule: #dde2ea;
+  --rule-firm: #b9c2d0;
+  --link: #1f4e8c;
+  --maxw: 1120px;
+  color-scheme: light;
 }
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
-
 body {
   margin: 0;
   background: var(--bg);
-  color: var(--text);
-  font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--ink);
+  font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
 a { color: var(--link); }
-a:hover { color: #a8cef0; }
 
-.wrap {
-  max-width: var(--maxw);
-  margin: 0 auto;
-  padding: 0 28px;
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+
+/* Small caps labels do the work headings and boxes would otherwise do. */
+.label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
 }
 
 /* ---- masthead ---------------------------------------------------------- */
 
-.masthead {
-  border-bottom: 1px solid var(--line);
-  background: linear-gradient(180deg, #10141a 0%, var(--bg) 100%);
-}
-
-.masthead .wrap { padding-top: 54px; padding-bottom: 46px; }
+.masthead .wrap { padding-top: 56px; padding-bottom: 28px; }
 
 .wordmark {
-  font-size: 40px;
-  font-weight: 350;
-  letter-spacing: -0.005em;
-  margin: 0 0 8px;
-  color: var(--text);
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  margin: 0 0 4px;
 }
 
 .wordmark a { color: inherit; text-decoration: none; }
 
-.masthead .strap {
-  margin: 0 0 22px;
-  color: var(--accent);
-  font-size: 15px;
-  letter-spacing: 0.04em;
-}
+.masthead .strap { margin: 0 0 20px; color: var(--ink-mid); }
 
-.masthead .intro {
-  margin: 0;
-  max-width: 68ch;
-  color: var(--text-dim);
-}
+.masthead .intro { margin: 0; max-width: 60ch; color: var(--ink-mid); font-size: 15px; }
+.masthead .intro + .intro { margin-top: 8px; }
 
-.masthead .intro + .intro { margin-top: 12px; }
-
-/* A slimmer masthead for the per-viewer pages. */
-.masthead.compact .wrap { padding-top: 22px; padding-bottom: 20px; }
-.masthead.compact .wordmark { font-size: 20px; margin: 0; }
+.masthead.compact .wrap { padding-top: 24px; padding-bottom: 18px; }
+.masthead.compact .wordmark { font-size: 15px; color: var(--ink-mid); }
 
 /* ---- filters ----------------------------------------------------------- */
 
-.filters {
-  border-bottom: 1px solid var(--line);
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: rgba(11, 13, 16, 0.94);
-  backdrop-filter: blur(8px);
-}
+.filters { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
 
 .filters .wrap {
   display: flex;
+  align-items: center;
+  gap: 10px;
   flex-wrap: wrap;
-  gap: 22px;
-  padding-top: 14px;
-  padding-bottom: 14px;
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 
-.filter-group { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-
-.filter-group > .label {
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-faint);
-  margin-right: 2px;
-}
+.filter-group { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 
 .chip {
   font: inherit;
   font-size: 13px;
-  color: var(--text-dim);
-  background: var(--bg-raised);
-  border: 1px solid var(--line-bright);
-  border-radius: 999px;
-  padding: 4px 13px;
+  color: var(--ink-mid);
+  background: none;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  padding: 1px 0;
   cursor: pointer;
 }
 
-.chip:hover { background: var(--bg-raised-2); color: var(--text); }
+.chip:hover { color: var(--ink); }
 
 .chip[aria-pressed="true"] {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #1a1206;
-  font-weight: 600;
+  color: var(--ink);
+  border-bottom-color: var(--ink);
 }
 
-/* ---- the panel grid ---------------------------------------------------- */
+/* ---- panels ------------------------------------------------------------ */
 
-main { padding: 40px 0 72px; }
+main { padding: 36px 0 64px; }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 26px;
+  column-gap: 30px;
+  row-gap: 42px;
 }
 
-.panel {
-  display: flex;
-  flex-direction: column;
-  background: var(--bg-raised);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  overflow: hidden;
-  text-decoration: none;
-  color: inherit;
-  transition: border-color 0.15s, transform 0.15s;
-}
-
-.panel:hover {
-  border-color: var(--line-bright);
-  transform: translateY(-2px);
-  color: inherit;
-}
+.panel { display: block; text-decoration: none; color: inherit; }
 
 .panel .shot {
-  position: relative;
   aspect-ratio: 16 / 10;
-  background: #05070a;
   overflow: hidden;
+  border: 1px solid var(--rule);
+  background: #f4f6f9;
 }
 
-.panel .shot img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
+.panel .shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-.panel:hover .shot img { opacity: 0.92; }
-
-/* Stand-in for a record with `thumb: null`, i.e. no still captured yet. */
-.shot.placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background:
-    radial-gradient(120% 90% at 50% 120%, #1d2c3d 0%, #0b1119 70%);
-  color: var(--text-faint);
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.panel .body { padding: 18px 20px 20px; flex: 1; display: flex; flex-direction: column; }
+.panel:hover .shot { border-color: var(--rule-firm); }
 
 .panel h3 {
-  margin: 0 0 6px;
-  font-size: 19px;
+  margin: 14px 0 4px;
+  font-size: 17px;
   font-weight: 600;
   line-height: 1.3;
 }
 
-.panel .tagline {
-  margin: 0 0 14px;
-  color: var(--text-dim);
-  font-size: 14.5px;
-  flex: 1;
-}
+.panel:hover h3 { color: var(--link); }
 
-.badges { display: flex; flex-wrap: wrap; gap: 6px; }
+.panel .tagline { margin: 0 0 8px; color: var(--ink-mid); font-size: 14px; }
 
-.badge {
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  padding: 2px 9px;
-  border-radius: 999px;
-  border: 1px solid var(--line-bright);
-  color: var(--text-faint);
-  white-space: nowrap;
-}
+.badges { display: flex; flex-wrap: wrap; gap: 10px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); }
+.badge.pending { color: #9a5b12; }
 
-.badge.level { border-color: #2f4256; color: #8fb0cc; }
-.badge.pending { border-color: var(--accent-dim); color: var(--accent); }
-
-.empty {
-  color: var(--text-dim);
-  padding: 40px 0;
-  display: none;
-}
-
-/* ---- viewer page ------------------------------------------------------- */
-
-.hero {
-  border-bottom: 1px solid var(--line);
-  background: var(--bg-raised);
-}
-
-.hero .wrap {
-  display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  gap: 40px;
-  align-items: center;
-  padding-top: 38px;
-  padding-bottom: 38px;
-}
-
-.hero h1 {
-  margin: 0 0 10px;
-  font-size: 34px;
-  font-weight: 600;
-  line-height: 1.2;
-}
-
-.hero .tagline {
-  margin: 0 0 20px;
-  color: var(--accent);
-  font-size: 17px;
-}
-
-.hero img {
-  width: 100%;
-  border-radius: var(--radius);
-  border: 1px solid var(--line-bright);
-  display: block;
-}
-
-.hero .shot.placeholder {
-  aspect-ratio: 16 / 10;
-  border-radius: var(--radius);
-  border: 1px solid var(--line-bright);
-}
-
-.launch {
-  display: inline-block;
-  background: var(--accent);
-  color: #1a1206;
-  font-weight: 600;
-  font-size: 15px;
-  text-decoration: none;
-  padding: 11px 22px;
-  border-radius: 6px;
-  margin-top: 4px;
-}
-
-.launch:hover { background: #f3b264; color: #1a1206; }
-
-.launch.disabled {
-  background: transparent;
-  border: 1px dashed var(--accent-dim);
-  color: var(--accent);
-  cursor: not-allowed;
-}
-
-.launch-note {
-  margin: 10px 0 0;
-  font-size: 13px;
-  color: var(--text-faint);
-  max-width: 46ch;
-}
-
-.crumbs { margin-bottom: 16px; font-size: 13px; color: var(--text-faint); }
-.crumbs a { text-decoration: none; }
-
-article h2 {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  margin: 46px 0 16px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--line);
-}
-
-article h2:first-child { margin-top: 0; }
-
-.prose { max-width: 72ch; }
-.prose p { margin: 0 0 15px; }
-
-.contents { list-style: none; padding: 0; margin: 0; max-width: 88ch; }
-
-.contents li {
-  padding: 11px 0;
-  border-bottom: 1px solid var(--line);
-  display: grid;
-  grid-template-columns: minmax(180px, 250px) 1fr;
-  gap: 20px;
-}
-
-.contents li:last-child { border-bottom: none; }
-.contents .term { font-weight: 600; color: var(--text); }
-.contents .def { color: var(--text-dim); }
-
-.controls { margin: 0; padding-left: 20px; max-width: 72ch; color: var(--text-dim); }
-.controls li { margin-bottom: 6px; }
-
-/* ---- lesson plans ------------------------------------------------------ */
-
-.lessons {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-  gap: 22px;
-}
-
-.lesson {
-  background: var(--bg-raised);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 22px 24px 24px;
-}
-
-.lesson .meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
-.lesson h3 { margin: 0 0 10px; font-size: 19px; line-height: 1.3; }
-.lesson .body { margin: 0 0 16px; color: var(--text-dim); font-size: 15px; }
-
-.lesson .steps {
-  margin: 0 0 16px;
-  padding-left: 20px;
-  font-size: 15px;
-}
-
-.lesson .steps li { margin-bottom: 7px; }
-
-.lesson .discussion {
-  border-top: 1px solid var(--line);
-  padding-top: 14px;
-  margin: 0;
-}
-
-.lesson .discussion .label {
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-faint);
-  display: block;
-  margin-bottom: 7px;
-}
-
-.lesson .discussion ul { margin: 0; padding-left: 20px; color: var(--accent); font-size: 15px; }
-.lesson .discussion li { margin-bottom: 5px; }
-
-/* ---- footer ------------------------------------------------------------ */
-
-footer {
-  border-top: 1px solid var(--line);
-  padding: 34px 0 48px;
-  color: var(--text-faint);
-  font-size: 14px;
-}
-
-footer .wrap > p { margin: 0 0 10px; max-width: 74ch; }
-
-/* Each logo sits on its own light chip. Institutional logos are drawn for
-   white paper -- some are dark ink on transparency, one ships with a white
-   plate baked in -- and dropping that mix straight onto a dark page makes
-   half of them vanish. One chip per logo is the only treatment that works for
-   all six without recolouring anyone's brand. Height is what's held constant,
-   not width, since the aspect ratios range from square to 5:1. */
-.partners {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 16px;
-  padding-bottom: 26px;
-  margin-bottom: 22px;
-  border-bottom: 1px solid var(--line);
-}
-
-.partner {
+.shot.placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 54px;
-  padding: 0 16px;
-  background: #f4f5f7;
-  border-radius: 6px;
+  color: var(--ink-faint);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.empty { display: none; color: var(--ink-mid); padding: 32px 0; }
+
+/* ---- viewer page ------------------------------------------------------- */
+
+.hero { border-top: 1px solid var(--rule); }
+
+.hero .wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  padding-top: 36px;
+  padding-bottom: 36px;
+}
+
+.hero h1 { margin: 0 0 6px; font-size: 27px; font-weight: 600; line-height: 1.25; }
+.hero .tagline { margin: 0 0 22px; color: var(--ink-mid); }
+.hero img { width: 100%; display: block; border: 1px solid var(--rule); }
+.hero .shot.placeholder { aspect-ratio: 16 / 10; border: 1px solid var(--rule); }
+
+.crumbs { margin: 0 0 14px; font-size: 13px; color: var(--ink-faint); }
+.crumbs a { text-decoration: none; }
+
+.launch {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 600;
   text-decoration: none;
-  opacity: 0.82;
-  transition: opacity 0.15s;
+  color: var(--link);
+  border-bottom: 2px solid var(--link);
+  padding-bottom: 2px;
 }
 
-.partner:hover { opacity: 1; }
+.launch.disabled { color: var(--ink-faint); border-bottom-style: dotted; border-bottom-color: var(--ink-faint); }
 
-.partner img {
-  max-height: 34px;
-  max-width: 170px;
-  width: auto;
-  display: block;
+.launch-note { margin: 12px 0 0; font-size: 13px; color: var(--ink-faint); max-width: 48ch; }
+
+/* ---- body sections ----------------------------------------------------- */
+
+article > section { border-top: 1px solid var(--rule); padding: 26px 0; }
+
+article h2 {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 14px;
 }
 
-/* Stands in for a logo file that is not in assets/logos/ yet. */
-.wordmark-fallback {
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: #2b3038;
+.prose { max-width: 62ch; }
+.prose p { margin: 0 0 12px; }
+.prose p:last-child { margin-bottom: 0; }
+
+.contents { list-style: none; padding: 0; margin: 0; max-width: 82ch; }
+
+.contents li {
+  display: grid;
+  grid-template-columns: minmax(150px, 210px) 1fr;
+  gap: 18px;
+  padding: 5px 0;
 }
+
+.contents .term { font-weight: 600; }
+.contents .def { color: var(--ink-mid); }
+
+.controls { margin: 0; padding: 0; list-style: none; max-width: 62ch; color: var(--ink-mid); }
+.controls li { padding: 3px 0; }
+
+/* ---- lessons ----------------------------------------------------------- */
+
+.lessons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 34px;
+}
+
+.lesson h3 { margin: 6px 0 10px; font-size: 16px; font-weight: 600; line-height: 1.35; }
+
+.lesson .meta {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.lesson .steps { margin: 0; padding-left: 18px; font-size: 14.5px; }
+.lesson .steps li { padding: 2px 0; }
+
+.lesson .discussion { margin: 12px 0 0; font-size: 14.5px; color: var(--link); }
+
+/* ---- footer ------------------------------------------------------------ */
+
+footer { border-top: 1px solid var(--rule); padding: 28px 0 56px; color: var(--ink-faint); font-size: 13px; }
+footer .wrap > p { margin: 0 0 8px; max-width: 70ch; }
+
+/* Logos are drawn for white paper, which is what this page now is, so they
+   need no chip. Greyed back so a row of six brands does not outweigh the
+   content above it. */
+.partners { display: flex; flex-wrap: wrap; align-items: center; gap: 30px; padding-bottom: 22px; }
+
+.partner { display: flex; align-items: center; height: 34px; opacity: 0.6; filter: grayscale(1); }
+.partner:hover { opacity: 1; filter: none; }
+.partner img { max-height: 30px; max-width: 150px; width: auto; display: block; }
+
+.wordmark-fallback { font-size: 15px; font-weight: 600; letter-spacing: 0.06em; color: var(--ink-mid); }
 
 /* ---- responsive -------------------------------------------------------- */
 
-@media (max-width: 1000px) {
+@media (max-width: 960px) {
   .grid { grid-template-columns: repeat(2, 1fr); }
-  .hero .wrap { grid-template-columns: 1fr; gap: 26px; }
+  .hero .wrap { grid-template-columns: 1fr; gap: 24px; }
 }
 
-@media (max-width: 660px) {
+@media (max-width: 640px) {
   .wrap { padding: 0 18px; }
   .grid { grid-template-columns: 1fr; }
-  .wordmark { font-size: 32px; }
-  .hero h1 { font-size: 26px; }
-  .contents li { grid-template-columns: 1fr; gap: 4px; }
-  .filters { position: static; }
+  .contents li { grid-template-columns: 1fr; gap: 2px; }
 }
