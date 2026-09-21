@@ -34,11 +34,6 @@ export const partners = [
 
 export const site = {
   title: 'GPlates Deconstructions',
-  strap: 'Viewers that take a reconstruction apart, and sketches for teaching with them.',
-  intro: [
-    'Twelve viewers of the Earth through deep time. Each runs in a browser with nothing to install.',
-    'Every one has a page here: what is in it, how to drive it, and a few lesson sketches. Prototype, throughout.',
-  ],
   footer: [
     'Viewers live in <a href="https://github.com/siwill22/Geode">Geode</a>, <a href="https://github.com/siwill22/GeodeViewers">GeodeViewers</a>, <a href="https://github.com/siwill22/StoryMaps">StoryMaps</a> and <a href="https://github.com/siwill22/marine-survey-globe">marine-survey-globe</a>. This is the shelf.',
     'Lesson sketches are starting points, not vetted curriculum. Take what is useful.',

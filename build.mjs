@@ -138,8 +138,6 @@ const FILTER_SCRIPT = `<script>
 function indexPage() {
   const body = `<header class="masthead"><div class="wrap">
   <h1 class="wordmark">${esc(site.title)}</h1>
-  <p class="strap">${esc(site.strap)}</p>
-  ${site.intro.map((p) => `<p class="intro">${p}</p>`).join('\n  ')}
 </div></header>
 
 <nav class="filters"><div class="wrap">
@@ -154,8 +152,8 @@ ${viewers.map(panel).join('\n')}
 </div></main>`;
 
   return page({
-    title: `${site.title} · ${site.strap}`,
-    description: site.strap,
+    title: site.title,
+    description: site.title,
     depth: 0,
     body,
     script: FILTER_SCRIPT,
