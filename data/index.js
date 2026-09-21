@@ -7,15 +7,14 @@ import geode from './geode.js';
 import geodeviewers from './geodeviewers.js';
 import storymaps from './storymaps.js';
 import surveys from './surveys.js';
-import maps from './maps.js';
 
 // One flat grid, in this order. The groupings below are labels on a page, not
 // sections of the index.
-export const viewers = [...geode, ...geodeviewers, ...storymaps, ...surveys, ...maps];
+export const viewers = [...geode, ...geodeviewers, ...storymaps, ...surveys];
 
 // Shown as the breadcrumb on each viewer's own page. The build rejects a
 // record whose collection is not one of these.
-export const collections = ['Globe viewers', 'Story maps', 'Survey history', 'Map projections'];
+export const collections = ['Globe viewers', 'Story maps', 'Survey history'];
 
 // Audience levels, in the order the filter chips show them. A viewer carries
 // a level if any of its lesson ideas is written for that level.
@@ -37,7 +36,7 @@ export const site = {
   title: 'GPlates Deconstructions',
   strap: 'Viewers that take a reconstruction apart, and sketches for teaching with them.',
   intro: [
-    'Fifteen viewers of the Earth through deep time. Each runs in a browser with nothing to install.',
+    'Twelve viewers of the Earth through deep time. Each runs in a browser with nothing to install.',
     'Every one has a page here: what is in it, how to drive it, and a few lesson sketches. Prototype, throughout.',
   ],
   footer: [

@@ -1,134 +1,10 @@
 // StoryMaps pages: https://github.com/siwill22/StoryMaps
-// Only southeast-tasmania is on `main`, which is what Pages serves. The rest
-// sit on a working branch and 404, which is what `live: false` records.
+// Only southeast-tasmania is on `main`, which is what Pages serves. The two
+// zircon pages sit on a working branch and 404, which `live: false` records.
 
 const SM = 'https://siwill22.github.io/StoryMaps/';
 
 export default [
-  {
-    slug: 'plate-boundaries',
-    title: 'Plate boundaries',
-    tagline: 'Every ridge, trench and transform, a million years at a time.',
-    collection: 'Story maps',
-    kind: 'Interactive map',
-    url: SM + 'plate-boundaries/',
-    live: false,
-    repo: 'https://github.com/siwill22/StoryMaps',
-    thumb: 'plate-boundaries.jpg',
-    summary: [
-      'Boundaries resolved from Müller et al. 2019 at every step from 250 Ma, 251 frames at 1 Myr. Frames cut hard rather than interpolate: a boundary network is a topology, and smoothing between two frames invents geometry the model does not have.',
-    ],
-    contents: [
-      ['Boundary types', 'Ridge, transform, subduction, each toggleable.'],
-      ['Polarity', 'Triangles on the overriding side.'],
-      ['Velocities', 'Arrows with a scale bar pinned to a round speed.'],
-      ['Deposits', 'Base metals within a window around their age.'],
-      ['Length curve', 'Boundary length on the scrubber\'s own axis.'],
-      ['Deep links', '#lon,lat,zoom,time pins the view.'],
-    ],
-    controls: [
-      'Drag to rotate, scroll to zoom.',
-      'Scrub or press play. 250 Ma left, 0 Ma right.',
-      'Hover a deposit for detail, click to pin. Rest on a cluster and it fans apart.',
-    ],
-    lessons: [
-      {
-        title: 'The Ring of Fire has not always been a ring',
-        level: 'Senior secondary',
-        duration: '50 min',
-        steps: [
-          'At 0 Ma, trace the Pacific subduction zones and note each polarity.',
-          'Step back in 50 Myr intervals. Mark every appearance, disappearance and flip.',
-          'Name the oldest continuously subducting margin in the model.',
-        ],
-        ask: 'What has to be true of a margin for subduction to run there for 200 Myr?',
-      },
-      {
-        title: 'Deposits sit where a boundary used to be',
-        level: 'Undergraduate',
-        duration: '90 min',
-        steps: [
-          'Pick a porphyry deposit. Read its age.',
-          'Set the slider there and describe the boundary configuration above it.',
-          'Repeat for four deposits and tabulate setting against type.',
-          'Find one whose present-day setting would have misled you.',
-        ],
-        ask: 'Which deposit types are diagnostic of a setting, and which are not?',
-      },
-      {
-        title: 'Read the length curve',
-        level: 'Undergraduate',
-        duration: '30 min',
-        steps: [
-          'Find the maximum and minimum. Note the ages.',
-          'Look at the map at each and say what differs.',
-        ],
-        ask: 'Does more boundary length mean faster plates, more plates, or neither?',
-      },
-    ],
-  },
-  {
-    slug: 'lips',
-    title: 'Fire, ice and extinction',
-    tagline: 'Flood basalts against glaciation and extinction, 0–540 Ma.',
-    collection: 'Story maps',
-    kind: 'Scroll-driven story',
-    url: SM + 'lips/',
-    live: false,
-    repo: 'https://github.com/siwill22/StoryMaps',
-    thumb: 'lips.jpg',
-    summary: [
-      'Large igneous provinces on a rotating globe, scrolled through the Phanerozoic against ice extent and marine extinction rates. Each scene sets a time and a camera; the camera aims at where a province was when it erupted, not where its remnants sit now.',
-      'The scrubber and legend stay live throughout, so a reader can stop following the argument and go poking at any point.',
-    ],
-    contents: [
-      ['LIPs', 'Reconstructed provinces, spotlit at eruption age.'],
-      ['Ice', 'Glaciation curve and banded glacial intervals.'],
-      ['Extinction', 'PBDB rates on the same axis.'],
-      ['Flux', 'Province area through time.'],
-      ['Projections', 'Orthographic globe or Robinson.'],
-    ],
-    controls: [
-      'Scroll to advance the story and the reconstruction.',
-      'Drag to rotate. Ctrl/⌘ and wheel to zoom, since a bare wheel scrolls.',
-    ],
-    lessons: [
-      {
-        title: 'Does every flood basalt cause an extinction?',
-        level: 'Undergraduate',
-        duration: '90 min',
-        steps: [
-          'List the five largest events on the flux curve.',
-          'For each, check whether an extinction peak coincides, and how closely.',
-          'Now go the other way: largest extinctions first.',
-          'Sort every event into LIP with extinction, LIP without, extinction without LIP.',
-        ],
-        ask: 'Dating uncertainty here runs to millions of years. What does that do to a causal claim?',
-      },
-      {
-        title: 'Fire and ice together',
-        level: 'Senior secondary',
-        duration: '50 min',
-        steps: [
-          'Scroll through and note each glacial interval.',
-          'Note whether a large eruption sits just before, during or after.',
-          'Write one sentence per pairing on which way causation could run.',
-        ],
-        ask: 'Aerosols cool for years, CO₂ warms for millennia. Which does a rock record see?',
-      },
-      {
-        title: 'The end-Permian, one scene',
-        level: 'Outreach',
-        duration: '15 min',
-        steps: [
-          'Scroll to the Siberian Traps and let the globe settle.',
-          'Show where the eruption was then, against where Siberia is now.',
-          'Bring up the extinction curve at the same moment.',
-        ],
-        ask: 'Nine in ten marine species went. How long until anything came back?',
-      },
-    ],
-  },
   {
     slug: 'zircons',
     title: 'Igneous zircons',
@@ -145,7 +21,7 @@ export default [
     contents: [
       ['Samples', 'Coloured by rock type. 14,167 of 24,519 fall in range.'],
       ['Bright and faint', 'Age drives colour, not visibility. A zircon does not stop existing.'],
-      ['Boundaries', 'The same reconstructed network, out to 1000 Ma.'],
+      ['Boundaries', 'Reconstructed ridges, trenches and transforms, out to 1000 Ma.'],
       ['Histogram', 'The compilation\'s age distribution.'],
     ],
     controls: [
@@ -196,7 +72,7 @@ export default [
     contents: [
       ['Pies', 'Wedges by lag-time bin, sized by share of grains.'],
       ['Lifespan', 'Visible within 5 Myr of deposition, then gone.'],
-      ['Boundaries', 'The same reconstructed network, 0–1000 Ma.'],
+      ['Boundaries', 'Reconstructed ridges, trenches and transforms, 0–1000 Ma.'],
     ],
     controls: [
       'Drag to rotate, scroll to zoom.',

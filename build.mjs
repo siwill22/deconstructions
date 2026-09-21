@@ -3,7 +3,7 @@
 //   node build.mjs
 //
 // A plain script with template literals and no dependencies: the whole site is
-// fifteen records and two page shapes, and a framework would be more machinery
+// twelve records and two page shapes, and a framework would be more machinery
 // than content. Output is gitignored; the GitHub Actions workflow runs this and
 // publishes the result.
 
