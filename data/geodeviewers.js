@@ -1,7 +1,7 @@
-// Standalone viewers: https://github.com/siwill22/GeodeViewers
+// Standalone viewers, one repo each: https://github.com/siwill22/Geode-<Viewer>
 // TropicalSutures came here from StoryMaps, which deleted its copy.
 
-const GV = 'https://siwill22.github.io/GeodeViewers/';
+const GV = 'https://siwill22.github.io/';
 
 export default [
   {
@@ -10,9 +10,9 @@ export default [
     tagline: 'The hierarchy of rotations a reconstruction is built from.',
     collection: 'Globe viewers',
     kind: 'Globe viewer',
-    url: GV + 'PlateTree/',
+    url: GV + 'Geode-PlateTree/',
     live: true,
-    repo: 'https://github.com/siwill22/GeodeViewers',
+    repo: 'https://github.com/siwill22/Geode-PlateTree',
     thumb: 'plate-tree.jpg',
     summary: [
       'A reconstruction is not a list of positions. Every plate is placed relative to another, up to an anchor, and an ordinary map hides that entirely. This one draws the hierarchy on the globe, Cao et al. 2024, 0–1800 Ma.',
@@ -88,9 +88,9 @@ export default [
     tagline: 'Every version of the same curve, drawn at once.',
     collection: 'Globe viewers',
     kind: 'Interactive map',
-    url: GV + 'TropicalSutures/',
+    url: GV + 'Geode-TropicalSutures/',
     live: true,
-    repo: 'https://github.com/siwill22/GeodeViewers',
+    repo: 'https://github.com/siwill22/Geode-TropicalSutures',
     thumb: 'tropical-sutures.jpg',
     status: 'Prototype.',
     summary: [
