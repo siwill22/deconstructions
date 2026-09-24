@@ -7,7 +7,7 @@ Live at <https://siwill22.github.io/deconstructions/>.
 ```
 data/           the catalog: one record per viewer, all the prose lives here
   geode.js        the five Geode globe viewers
-  geodeviewers.js the standalone GeodeViewers pages
+  geodeviewers.js the standalone viewers, one Geode-<Viewer> repo each
   storymaps.js    the three StoryMaps pages
   surveys.js      the marine survey globe and HistMag
   index.js        concatenates them, plus site-level copy and the logo row

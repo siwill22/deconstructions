@@ -35,7 +35,7 @@ export const partners = [
 export const site = {
   title: 'GPlates Deconstructions',
   footer: [
-    'Viewers live in <a href="https://github.com/siwill22/Geode">Geode</a>, <a href="https://github.com/siwill22/GeodeViewers">GeodeViewers</a>, <a href="https://github.com/siwill22/StoryMaps">StoryMaps</a> and <a href="https://github.com/siwill22/marine-survey-globe">marine-survey-globe</a>. This is the shelf.',
+    'Viewers live in <a href="https://github.com/siwill22/Geode">Geode</a>, the standalone <a href="https://github.com/siwill22?tab=repositories&q=Geode-">Geode-*</a> repos, <a href="https://github.com/siwill22/StoryMaps">StoryMaps</a> and <a href="https://github.com/siwill22/marine-survey-globe">marine-survey-globe</a>. This is the shelf.',
     'Lesson sketches are starting points, not vetted curriculum. Take what is useful.',
   ],
 };
