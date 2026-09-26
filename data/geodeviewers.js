@@ -228,9 +228,10 @@ export default [
       'Three chapters, each asking why the last fit was not perfect: six coastlines; then India, Iberia, Madagascar, Greenland and Mexico freed as plates of their own; then the continental crust that lies under the sea, with Zealandia.',
       'A fourth turns from fitting continents to moving them over the mantle. Africa alone starts where it is today, over fixed hotspots. Drag it to where it was 150 million years ago and each hotspot draws the trail that rotation implies, a disc every 10 Myr in the colour of its age. Line the discs up with the dated seamounts and the raised seafloor of the Tristan, St Helena, Réunion and Canary chains.',
       'A fifth puts the two together as a rotation tree. It starts from your chapter 3 fit and your chapter 4 Africa. Click one plate, then the plate it moves with, and a line joins their centres. Link everything back to Africa, the mother plate, and moving Africa carries the whole assembly, with each plate keeping its rotation relative to its parent.',
+      'A sixth opens the South Atlantic from its seafloor. Africa stays put. Pick an isochron, from C5 at 11 Ma to M0 at 120 Ma, and the globe shows the ocean as it was then; drag South America until the two flanks of that age meet. Fit them one by one and your rotations draw synthetic flowlines, to set against the fracture zones, the path of finite poles, and the spreading rate at four places along the ridge.',
     ],
     contents: [
-      ['Chapters', '1. Fit the continents. 2. More than six. 3. Beneath the waves. 4. Plates over plumes. 5. The rotation tree.'],
+      ['Chapters', '1. Fit the continents. 2. More than six. 3. Beneath the waves. 4. Plates over plumes. 5. The rotation tree. 6. Opening the South Atlantic.'],
       ['Plates', 'Groups of continental blocks from Müller et al. (2019), land from Natural Earth 1:110m.'],
       ['Submerged crust', 'Shelves and stretched margins, the real edge of each continent (chapter 3).'],
       ['Zealandia', 'Lord Howe Rise, Challenger and Campbell plateaus, and New Zealand (chapter 3).'],
@@ -238,6 +239,8 @@ export default [
       ['Misfit', 'Mean distance from each dated sample to your predicted trail at its age, per hotspot (chapter 4).'],
       ['Rotation tree', 'Each plate moves with another or with the mantle, linked by clicks and drawn as lines between plate centres; the .rot export is the same tree (chapter 5).'],
       ['Carried over', 'Chapter 5 starts from your chapter 3 fit and chapter 4 Africa, stored in the browser or loaded from exported .rot files.'],
+      ['Seafloor', 'South Atlantic fracture zones from GSFML (Wessel et al. 2015) and isochrons C5 to M0 from Seton et al. (2012) (chapter 6).'],
+      ['Flowlines and rates', 'Synthetic flowlines from your fitted stages, a misfit to fracture zones and isochrons, finite poles, and full spreading rates at four ridge points (chapter 6).'],
       ['Euler pole', 'Each plate\'s total rotation as pole latitude, longitude and angle.'],
       ['Play', 'From your reconstruction to present day and back, each plate about its own pole.'],
       ['Export', 'A .rot file: identity at 0 Ma, your arrangement at the reconstruction age.'],
@@ -248,6 +251,7 @@ export default [
       'Shift-drag, or switch on Twist, to spin it about its own centre.',
       'Drag the ocean to turn the globe.',
       'Play, or scrub the time bar; grabbing a plate returns to the reconstruction.',
+      'In chapter 6, pick an isochron to fit; Present shows every stage against the fracture zones.',
       'Undo, Reset, Export .rot.',
     ],
     lessons: [
